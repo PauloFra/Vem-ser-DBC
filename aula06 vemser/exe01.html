@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Absolute</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body{
+            font-family: 'Roboto', sans-serif;
+          
+        }
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            column-gap: 50px;
+            row-gap: 30px;
+        }
+        @media(max-width: 1200px){
+            .grid-container{
+                grid-template-columns: auto auto ;
+                gap: 100px 100px;
+            }
+         }
+         @media(max-width: 800px){
+            .grid-container{
+             grid-template-columns: auto;
+            }
+        }
+        .grid-item{
+            background-color: rgb(243, 151, 151);
+            border: 1px solid black;
+            font-size: 20px;
+            text-align: center;
+            padding: 30px ;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+        <div class="grid-item">Teste</div>
+    </div>
+
+</body>
+</html>

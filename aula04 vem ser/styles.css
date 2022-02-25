@@ -1,0 +1,32 @@
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.container-flex{
+    display: flex;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+/*
+flex-direction:;
+
+display:flex;
+
+align-items:center;
+
+justify-content:;
+esta propriedade CSS alinha os itens horizontalmente e aceita os seguintes valores:
+flex-start:Os itens se alinham ao lado esquerdo do contêiner.
+flex-end: Os itens são alinhados ao lado direito do contêiner.
+center: os itens se alinham no centro do contêiner.
+space-between: Os itens são exibidos com espaçamento igual entre eles..
+space-around:Os itens são exibidos com espaçamento igual ao redor deles.
+
+flex-wrap:;
+nowrap: Cada item cabe em uma única linha.
+wrap: Os itens são agrupados em linhas adicionais.
+wrap-reverse: Os itens se transformam em linhas adicionais no sentido inverso.
+*/

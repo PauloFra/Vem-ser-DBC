@@ -1,0 +1,63 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 23px;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+}
+header a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px;
+}
+header a:hover{
+    text-decoration: underline;
+}
+header li{
+    display: inline;
+    
+}
+header > a{
+    font-size: 24px;
+}
+/* Conteudo da pagina */
+
+main{
+    max-width: 1100px;
+    margin: 40px auto;
+}
+ img{
+    max-width: 100%;
+} 
+.noticias{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px 30px;
+}
+.grid-noticias{
+    width: 380px;
+    height: 290px;
+}
+.bermudas{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px 150px;
+    text-align: center;
+}
+p{
+    display: flex;
+}
+.bermudas img{
+    float: left;
+    height: 140px;
+    width: 190px;
+}
+.bermudas p{
+    padding-top: 42px;
+}
