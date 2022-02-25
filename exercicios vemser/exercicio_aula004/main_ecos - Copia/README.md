@@ -1,1 +1,0 @@
-# vemserdbc-ecos
