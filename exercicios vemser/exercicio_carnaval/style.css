@@ -1,0 +1,221 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #E5E5E5;
+    max-width: 100%;
+}
+.buttons-left{
+    position: absolute;
+    right: 0;
+    margin-right: 80px;
+}
+
+header{
+    display: flex;
+    background-color: #FFFFFF;
+    align-items: center;
+}
+header a{
+    margin-left: 36px;
+}
+nav a{
+    text-decoration: none;
+    color: #18A0FB;
+}
+header li{
+    display: inline;
+}
+
+/* botoes */
+header button{
+    width: 130px;
+    height: 40px;
+
+}
+button{
+    font-family:'Roboto', sans-serif;
+    border-radius: 6px;
+    width: 130px;
+    height: 40px;
+}
+#register-btn{
+    background-color: #18A0FB;
+    color: white;
+    border: 0 solid #18A0FB ;
+}
+#login-btn{
+    border: 1px solid #18A0FB ;
+    color: #18A0FB;
+    background-color: transparent;
+}
+.btn-blue{
+    width: 192px;
+    height : 52px;
+    background-color: #18A0FB;
+    color: white;
+    border: 0 solid #18A0FB ;
+    font-size: 17px;
+    margin: auto;
+}
+/* Content */
+img{
+    max-width: 100%;
+}
+.community{
+   text-align: center;
+}
+main{
+    margin: 0 auto;
+    max-width: 100%;
+}
+.first{
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+}
+.community{
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 410px 0 156px 0;
+}
+h1{
+    font-size: 56px;
+}
+.community > img{
+    width: 132px;
+    height: 132px;
+}
+.second{
+    background-color: white;
+    padding-left:80px;
+    padding-bottom: 120px;
+}
+
+.second-content{
+    font-size: 48px;
+    width: 850px;
+    line-height: 72px;
+    padding: 50px 0 0 0;
+}
+.grip-group{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px 150px;
+    font-size: 22px;
+}
+.grip-element{
+    width: 600px;
+}
+.third{
+    display: block;
+    font-size: 24px;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.third img{
+    width:750px;
+    height:440px;
+}
+.third-left {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left-txt{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 686px;
+}
+.pad{
+    margin-left: 30px;
+}
+
+.padd{
+    padding-bottom: 90px;
+}
+.float-right{
+    padding-top: 90px;
+    justify-content: center;
+    background-color:transparent;
+    justify-content: center;
+    padding-bottom: 90px;
+}
+
+.fourth{
+    background-color: white;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 45px;
+    margin: 0 auto;
+    
+}
+.four-text{
+    display: inline-block;
+    width: 1450px;
+    justify-content: center;
+}
+.grip-commum{
+    display: grid;
+    grid-template-columns: 200px  200px 200px 200px;
+    justify-content: center;
+    gap: 60px;
+    padding-bottom: 60px;
+}
+.five{
+    font-size: 36px;
+    width: 1500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.unique{
+    display: flex;
+    margin: 140px 0 140px 0;
+    align-items: center;
+    justify-content: center
+}
+.adjust{
+    margin-left:16px;
+}
+footer{
+    background-color: white;
+    padding: 120px 0 50px 0;
+}
+footer nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer li{
+    align-items: center;
+    display: inline;
+    padding: 0 90px 0 90px;
+    justify-content: center;
+}
+footer a{
+    color: black;
+    font-weight: bold;
+}
+.contact{
+    display: table;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 0 150px 83px;
+}
+.contact img{
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
