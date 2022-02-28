@@ -6,6 +6,9 @@ body{
     background-color: #E5E5E5;
     max-width: 100%;
 }
+#hamburguer{
+    display: none;
+}
 .buttons-left{
     position: absolute;
     right: 0;
@@ -39,16 +42,27 @@ button{
     border-radius: 6px;
     width: 130px;
     height: 40px;
+    transition:0.8s;
 }
 #register-btn{
     background-color: #18A0FB;
     color: white;
     border: 0 solid #18A0FB ;
 }
+#register-btn:hover{
+    transition-duration: 0.6s;
+    background-color: white;
+    color: #18A0FB;
+    border: 1px solid #18A0FB ;
+}
 #login-btn{
     border: 1px solid #18A0FB ;
     color: #18A0FB;
     background-color: transparent;
+}
+#login-btn:hover{
+    background-color: #18A0FB;
+    color: white;
 }
 .btn-blue{
     width: 192px;
@@ -58,6 +72,16 @@ button{
     border: 0 solid #18A0FB ;
     font-size: 17px;
     margin: auto;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+button:hover{
+    transition-duration: 0.6s;
+    background-color: white;
+    color: #18A0FB;
+    border: 1px solid #18A0FB ;
 }
 /* Content */
 img{
@@ -107,7 +131,7 @@ h1{
     display: grid;
     grid-template-columns: auto auto;
     gap: 30px 150px;
-    font-size: 22px;
+    font-size: 23px;
 }
 .grip-element{
     width: 600px;
@@ -218,4 +242,26 @@ footer a{
 .contact img{
     margin-left: 20px;
     margin-bottom: 30px;
+}
+@media (max-width: 1000px)
+{
+    #hamburguer{
+        display: block;
+    }
+    header button , nav{
+        display: none;
+
+    }
+    header{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        justify-content: space-between;   
+        max-width: 100%;
+    }
+    .second{
+        display: none;
+    }
+   
+
 }
