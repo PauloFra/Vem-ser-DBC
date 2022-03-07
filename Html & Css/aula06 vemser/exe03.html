@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid area</title>
+    <style>
+        .grid div{
+            width: 200px;
+            height: 50px;
+            background-color: aqua;
+        }
+        .grid{
+            background-color: blue;
+            display: grid;
+            gap :10px;
+            grid-template-columns: auto auto auto auto; 
+        }
+        .item1{
+            grid-area: 2 /4;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="item1"><p>1</p></div>
+        <div class="item2"><p>2</p></div>
+        <div class="item3"><p>3</p></div>
+        <div class="item4"><p>4</p></div>
+        <div class="item5"><p>5</p></div>
+        <div class="item6"><p>6</p></div>
+        <div class="item7"><p>7</p></div>
+    </div>
+</body>
+</html>

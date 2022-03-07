@@ -1,0 +1,52 @@
+.container p:nth-child(3){
+    color:red;
+}
+.container p:first-child{
+    color:red;
+   
+}
+.container p:last-child{
+    color:red;
+}
+/* 
+    começa a contar do ultimo
+::nth-last-child 
+*/
+/* 
+seleção de elementos com :nth-child
+even = pares
+odd = impares
+5n = pula de quantos elementos ele vai pular para aplicar o estilo
+*/
+.container p:nth-child(even){
+    color: red;
+}
+.container p:nth-child(odd){
+    background-color: aquamarine;
+}
+nav{
+    margin-bottom: 300px;
+}
+nav ul li{
+    display: inline;
+    margin-right: 80px;
+}
+nav ul li::before{
+    content: '';
+    display: inline-block;
+    background-image:url(download.jpg);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
+nav ul li::after{
+    content: '';
+    display: inline-block;
+    background-image:url(download.jpg);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
+/* p:not(.tes){
+    color: red;
+} */
