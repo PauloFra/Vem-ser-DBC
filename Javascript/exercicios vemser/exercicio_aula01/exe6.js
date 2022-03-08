@@ -4,16 +4,16 @@ switch (escolhaDoUsuario){
         alert("Boas Vindas!");
     break
     case '2':
-        let simDoUsuario = prompt("Voce tem certeza disso?");
-        if(simDoUsuario.toLowerCase() === "sim"){
+        let simDoUsuario = confirm("Voce tem certeza disso?");
             alert("Despedidas");
-        }
     break
     case '3':
         let quantosDias = parseInt(prompt("Quantos dias deseja estender sua hospetagem?"));
         if(!isNaN(quantosDias)){
-            alert("Sucesso! sua hospedagem foi estendida em "+ quantosDias +" dias!")
-        }  
+            alert("Sucesso! sua hospedagem foi estendida em "+ quantosDias +" dias!");
+        }else{
+            alert("Informe corretamente os dias")
+        }
     break
     case '4':
         alert("Ok")    

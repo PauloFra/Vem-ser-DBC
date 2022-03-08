@@ -1,19 +1,10 @@
-let isFriday = Boolean;
-let isTwoGreaterThanFour = Boolean;
-let isValueEmpty = Boolean;
-
-isFriday = prompt("Hoje é sexta-feira?");
-
-isTwoGreaterThanFour = 2 > 4;
-
-isValueEmpty = prompt("Digite uma informação");
-
-if(isValueEmpty === null){
-    isValueEmpty = null;
-}else if(isValueEmpty === ""){
-    isValueEmpty = "";
-}
-else if(isValueEmpty === undefined){
-    isValueEmpty = undefined;
+var isValueEmpty;
+let isFriday = confirm("Hoje é sexta-feira?");
+let isTwoGreaterThanFour = 2 > 4;
+let valorDigitado = prompt("Digite uma informação");
+if(valorDigitado === null || valorDigitado === "" || valorDigitado === undefined){
+    isValueEmpty = true;  
+}else{
+    isValueEmpty = false;
 }
 alert(isValueEmpty);
