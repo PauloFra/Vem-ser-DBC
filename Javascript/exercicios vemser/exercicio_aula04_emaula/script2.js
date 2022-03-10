@@ -10,7 +10,7 @@
 //     return arrayInvertido;
 // }
 // console.log(inverteNumeros(234));
-function invertNumber(num){
+const invertNumber = num =>{
     let numInvertido = 0;
     while(num > 0){
         let resto = num % 10;
