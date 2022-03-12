@@ -6,6 +6,7 @@
 function pegaSegundoMaiorEMenor(array) {
   let aux = [];
   for (let i = 0; i < array.length; i++) {
+    debugger;
     for (let x = 0; x < array.length; x++) {
       if (array[i] < array[x]) {
         aux = array[i];
