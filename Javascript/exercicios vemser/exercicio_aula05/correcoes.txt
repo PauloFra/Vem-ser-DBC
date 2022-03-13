@@ -1,0 +1,10 @@
+- Ao tentar excluir, validar se já tem produtos cadastrados;
+- Validar a informação inserida na opção 4 (informei qualquer coisa e não aconteceu nada);
+- Validar o preco ao inserir um produto (coloquei um campo vazio e o parse salvou como NaN, isso depois vai dar erro lá na tua soma dos precos dos produtos);
+- Adicionar feedbacks para o usuário (estou inserindo e excluindo registros, por exemplo, e não mostra nenhuma mensagem dando a impressão que não aconteceu nada);
+- Adicionar feedbacks nas listagens e no total de patrimônio quando não tiver produtos cadastrados;
+- Adicionar feedback na listagem 3 caso não econtre nenhum;
+- Corrigir a lógica da listagem 3, não está de acordo com o enunciado, deveria listar todos os objetos que contém (includes) aquela string passada e esses objetos devem ter somente as propriedades descrição e preco (sem mostrar o id);
+- Alterar o parseInt do cadastro para parseFloat, estamos falando de valor monetário, ou seja, muito provavel ter casas decimais;
+- Alterar a lógica das opções 2 e 3, o usuário não sabe o index do produto na lista ele sabe somente o código do produto (id);
+- Adicionar feedback para quando seleciono uma opção inválida no menu;
