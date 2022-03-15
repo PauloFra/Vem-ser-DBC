@@ -1,6 +1,12 @@
 let arrayColabora = [];
 let add = [];
 
+
+
+
+
+
+
 class Colaboradores {
     id;
     nome;
@@ -24,12 +30,12 @@ class Colaboradores {
   } 
   
   const marcarPontos = (id) => {
-    id = (id - 1);
+
     let dia = parseInt(prompt('dia do ponto'));
     let hora = parseInt(prompt('hora do ponto?'));
 
-    if(arrayColabora[id].marcacoesPonto === undefined){
-      arrayColabora[id].marcacoesPonto = [];
+    if(arrayColabora.find(colaborador => colaborador.id == id) === undefined){
+        arrayColabora.find(colaborador => colaborador.id == id).marcacoesPonto = [];
     }
     if( dia < 1 || dia > 31) {
       alert('Insira valores válidos');
@@ -38,8 +44,8 @@ class Colaboradores {
         alert('Insira valores válidos');
     }
     else {
-    arrayColabora[id].marcacoesPonto.push('dia do ponto ' + dia + ' hora do ponto '+ hora +' horas');
-    console.log('Ponto marcado para o colaborador ' + arrayColabora[id].nome); 
+    arrayColabora.find(colaborador => colaborador.id == id).marcacoesPonto = ('dia do ponto ' + dia + ' hora do ponto '+ hora +' horas');
+    console.log('Ponto marcado para o colaborador ' + arrayColabora.find(colaborador => colaborador.id == id).nome); 
   } 
 }
 
@@ -56,7 +62,7 @@ let comandoPrompt;
       let id; 
       id = parseInt(prompt('Qual o id do colaborador que deseja marcar ponto')) 
       marcarPontos(id);
-      id = (id - 1);
+    
     }
     if(comandoPrompt == '3'){
      arrayColabora.forEach(element => {
@@ -64,10 +70,11 @@ let comandoPrompt;
      });
     }
     if(comandoPrompt == '4'){
-      arrayColabora.forEach(element => {
-        if(element.marcacoesPonto === undefined){
-          return console.table('O colaborador ' + element.nome + ' ainda não marcou ponto')
-        }
-      });
-    }
-}while(comandoPrompt !== '9')
+
+      let arrayFiltered = arrayColabora.filter(element => element.marcacoesPonto === undefined)
+      console.log(arrayFiltered);
+      }
+             
+      }
+    
+    while(comandoPrompt !== '9')
