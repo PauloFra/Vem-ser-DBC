@@ -31,10 +31,10 @@ class Colaboradores {
     if(arrayColabora[id].marcacoesPonto === undefined){
       arrayColabora[id].marcacoesPonto = [];
     }
-    if( dia < 1 && dia > 31) {
+    if( dia < 1 || dia > 31) {
       alert('Insira valores válidos');
     }
-    else if(hora < 0 && hora > 24){
+    else if(hora < 0 || hora > 24){
         alert('Insira valores válidos');
     }
     else {
