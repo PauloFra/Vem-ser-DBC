@@ -1,16 +1,10 @@
 let arrayColabora = [];
 let add = [];
 
-
-
-
-
-
-
 class Colaboradores {
     id;
     nome;
-    marcacoesPonto;
+    marcacoesPonto = [];
   
     constructor( idParam , nomeParam, ) {
       this.id = idParam;
@@ -30,24 +24,13 @@ class Colaboradores {
   } 
   
   const marcarPontos = (id) => {
-
     let dia = parseInt(prompt('dia do ponto'));
     let hora = parseInt(prompt('hora do ponto?'));
-
-    if(arrayColabora.find(colaborador => colaborador.id == id) === undefined){
-        arrayColabora.find(colaborador => colaborador.id == id).marcacoesPonto = [];
-    }
-    if( dia < 1 || dia > 31) {
-      alert('Insira valores válidos');
-    }
-    else if(hora < 0 || hora > 24){
-        alert('Insira valores válidos');
-    }
-    else {
-    arrayColabora.find(colaborador => colaborador.id == id).marcacoesPonto = ('dia do ponto ' + dia + ' hora do ponto '+ hora +' horas');
+    let colaborador = arrayColabora.find(colaborador => colaborador.id == id);
+    colaborador.marcacoesPonto.push('dia: '+ dia +'hora: '+ hora);
     console.log('Ponto marcado para o colaborador ' + arrayColabora.find(colaborador => colaborador.id == id).nome); 
   } 
-}
+
 
 
 let comandoPrompt;

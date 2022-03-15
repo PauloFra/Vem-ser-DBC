@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+
+}
+main{
+    max-width: 1200px;
+    margin: 0 auto;
+    font-weight: bold;
+}
+h2{
+    font-size: 30px;
+    
+}
+.container{
+    margin: 30px auto;
+    text-align: center;
+    border: 1px solid rgb(136, 121, 121) ;
+    border-radius: 5px;
+    justify-content: center;
+}
+.bg-h2{
+    color: white;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(80, 134, 235);
+    border-radius: 5px;
+    padding: 15px 0;
+    width: 100%; 
+}
+.flexbox{
+    display: flex;
+    padding: 30px;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 120px;
+}
+.flexbox input{
+    width: 700px;
+    padding: 5px;
+}
+.container label{
+    font-size: 20px;
+}
+.content{
+    text-align: center;
+    margin: 40px auto;
+}
+.flexbox button{
+    color: white;
+    margin-left: 40px;
+    background-color: rgb(80, 134, 235);
+    border: none;    
+    width: 30px;
+    height: 30px;
+    border-radius: 180px;
+}
+.div-flex{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 9px;
+}
+.div-flex button{
+    color: rgb(253, 0, 0);
+    border: none;    
+    width: 30px;
+    height: 30px;
+    border-radius: 180px;
+}
+.bg-color1{
+    background-color: rgb(251, 235, 235);
+}
+
+.bg-color2{
+    background-color: rgb(230, 255, 230);    
+}
