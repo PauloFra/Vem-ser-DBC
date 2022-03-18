@@ -181,19 +181,44 @@ const validarEmail = () => {
 //     } );
   }
   const listarUsuarios = () => {
-        
+      const listaDeUsers = document.getElementById('user-list');
+   
+      
       axios.get('http://localhost:3000/colaboradores')
       .then((sucess) =>{
-        console.table(sucess.data)
+        
+
+        sucess.data.forEach(element => {
+        const Lista = document.createElement('ul');
+        const ItemDaLista = document.createElement('li');
+        const divNome = document.createElement('div');
+        const divNacimento = document.createElement('div');
+        const divEmail = document.createElement('div');
+        
+        const pFulano = document.createElement('p');
+        const pNacimento = document.createElement('p');
+        const pEmail = document.createElement('p');
+        pFulano.textContent ='Nome: '+ element.nome;
+        pNacimento.textContent ='dataDeNacimento: '+ element.nascimento ;
+        pEmail.textContent = 'email: ' + element.email;
+
+        divNome.append(pFulano);
+        divNacimento.append(pNacimento);
+        divEmail.append(pEmail);
+        ItemDaLista.append(divNome,divNacimento,divEmail);
+        Lista.append(ItemDaLista);
+        listaDeUsers.append(Lista);
+        console.log(element);
+        console.log(element.nome);
+      })
       }
       ).catch((erro) =>{
         console.log('Ops ,Encontramos algum erro')
       }
       )
-  };
-  
-  
-  
+    
+      
+    }  
   const validarCadastro = (event) => {
     event.preventDefault();
     let cadastroValido = validarData() && validarEmail() && validarSenha() && booleanNome;
