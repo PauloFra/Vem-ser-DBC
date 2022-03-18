@@ -194,7 +194,11 @@ const validarEmail = () => {
         const divNome = document.createElement('div');
         const divNacimento = document.createElement('div');
         const divEmail = document.createElement('div');
-        
+        const divPai = document.createElement('div')
+        divPai.classList.add("pb-5" ,"flex-column" ,"d-flex", "align-items-center", "justify-content-center");
+        Lista.classList.add("w-100", "border", "border-primary", "rounded", "flex-column", "d-flex", "align-items-center", "justify-content-center");
+        ItemDaLista.classList.add("w-1000","mt-2" ,"p-3" , "align-items-center");
+    
         const pFulano = document.createElement('p');
         const pNacimento = document.createElement('p');
         const pEmail = document.createElement('p');
@@ -202,12 +206,13 @@ const validarEmail = () => {
         pNacimento.textContent ='dataDeNacimento: '+ element.nascimento ;
         pEmail.textContent = 'email: ' + element.email;
 
-        divNome.append(pFulano);
-        divNacimento.append(pNacimento);
-        divEmail.append(pEmail);
-        ItemDaLista.append(divNome,divNacimento,divEmail);
+        // divNome.append(pFulano);
+        // divNacimento.append(pNacimento);
+        // divEmail.append(pEmail);
+        ItemDaLista.append(pFulano,pNacimento,pEmail);
         Lista.append(ItemDaLista);
-        listaDeUsers.append(Lista);
+        divPai.append(Lista);
+        listaDeUsers.append(divPai);
         console.log(element);
         console.log(element.nome);
       })
