@@ -1,0 +1,32 @@
+{
+  "colaboradores": [
+    {
+      "id": 1,
+      "nome": "json-server",
+      "dataNascimento": "typicode",
+      "email": "emailTeste",
+      "senha": "senha"
+    },
+    {
+      "nome": "",
+      "nascimento": "10/01/2000",
+      "email": "paulo@dbccompany.com",
+      "senha": "Paulo12345@",
+      "id": 2
+    },
+    {
+      "nome": "wsdsaewAs",
+      "nascimento": "10/01/2000",
+      "email": "paulo@dbccompany.com",
+      "senha": "Paulo12345@",
+      "id": 3
+    },
+    {
+      "nome": "Pedro",
+      "nascimento": "10/01/2000",
+      "email": "paulo@dbccompany.com",
+      "senha": "Paulo12345@",
+      "id": 4
+    }
+  ]
+}
