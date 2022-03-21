@@ -1,0 +1,34 @@
+{
+  "Usuarios": [
+    {
+      "tipo": "Recrutador",
+      "nome": "Joao",
+      "dataNascimento": "02/01/2001",
+      "email": "joao@dbccompany.com",
+      "senha": "sadSsdw!23sq",
+      "candidatura": [],
+      "id": 1
+    },
+    {
+      "tipo": "Trabalhador",
+      "nome": "NomeTeste",
+      "dataNascimento": "10/10/2001",
+      "email": "nometeste@dbccompany.com",
+      "senha": "e212!ww12e1Wds@1",
+      "candidatura": [
+        {
+          "idVaga": "2",
+          "idCandidato": 2,
+          "reprovado": false
+        },
+        {
+          "idVaga": "1",
+          "idCandidato": 2,
+          "reprovado": false
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "Vagas": []
+}

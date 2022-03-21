@@ -27,6 +27,13 @@
       "email": "paulo@dbccompany.com",
       "senha": "Paulo12345@",
       "id": 4
+    },
+    {
+      "nome": "Paulo",
+      "nascimento": "11/12/2001",
+      "email": "pau@dbccomapany.com",
+      "senha": "123!wsWw",
+      "id": 5
     }
   ]
 }
