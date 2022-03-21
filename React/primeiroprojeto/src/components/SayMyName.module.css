@@ -1,0 +1,12 @@
+.sayMyName{
+    background-color: aquamarine;
+}
+.sayMyName h1{
+    color: white;
+    font-size: 50px;
+}
+.sayMyName img{
+    max-width: 100%;
+    width: 300px;
+    padding: 10px;
+}
