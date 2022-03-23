@@ -1,5 +1,5 @@
 import styles from './header.module.css'
-import foto from '../images/cogumelo.jpeg'
+import foto from './images/cogumelo.jpeg'
 import Nav from './nav.js'
 const Header = () =>{
     return(

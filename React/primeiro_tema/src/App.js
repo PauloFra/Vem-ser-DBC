@@ -10,9 +10,9 @@ function App() {
   return (
     <div>
         <Header />
-        <Contato />
+        {/* <Contato /> */}
         {/* <About />  */}
-        {/* <Home />        */}
+        <Home />       
         <Footer />
 
     </div>

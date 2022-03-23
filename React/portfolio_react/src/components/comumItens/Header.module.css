@@ -1,0 +1,31 @@
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(248, 245, 245, 0.746);
+}
+li{
+    display: inline;
+    padding-left: 20px;
+    text-decoration: none;
+}
+header a{
+    text-decoration: none;
+    color: rgb(0, 125, 241);
+    font-size: 20px
+}
+nav a:hover{
+    text-decoration: underline;
+}
+header > a{
+    font-weight: bold;
+    font-size: 35px;
+}
+header > a:hover{
+    transition: 2s;
+    color:rgb(126, 144, 241)
+}
+header > a:not(:hover){
+    transition: 2s;
+    color: rgb(0, 125, 241);
+  }
