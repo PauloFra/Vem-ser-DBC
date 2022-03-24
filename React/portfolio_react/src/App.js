@@ -8,7 +8,9 @@ import Footer from './components/comumItens/Footer';
 import Perfil from "./components/Perfil/Perfil";
 import Contato from "./components/Contato/Contato";
 import Repositorios from "./components/Repositorios/Repositorios";
+import ReposGet from "./components/Repositorios/ReposGet";
 function App() {
+  
   return (
     <div>
         <BrowserRouter >

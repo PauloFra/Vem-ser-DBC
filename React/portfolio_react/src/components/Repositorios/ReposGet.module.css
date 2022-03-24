@@ -1,0 +1,38 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(228, 226, 226, 0.746);
+    border-radius:9px;
+    width: 330px;
+    height: 200px;
+    background-color:rgba(248, 245, 245, 0.746)
+      
+}
+.cardMain{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap:30px;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.divH3{
+    background-color: rgba(0, 0, 0, 0.74);
+    border-radius:9px;
+    font-size: 25px;
+    color: white;
+}
+.divDoP{
+    margin-top: 30px;
+    font-size: 20px;
+}
+.card:hover
+{
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        transition: 1.4s;
+}
+/* .card:hover{
+    
+} */
