@@ -26,14 +26,15 @@ export default function ReposGet() {
   return (
         <div className={style.cardMain}>
             {repos.length && repos.map(element =>(
-             <div key={element.id} className={style.card}>
-             <div className={style.divH3}>
-                 <h3>{element.name}</h3>
-             </div>
-             <div className={style.divDoP}>
-                 <span>{element.full_name}</span>    
-             </div>
+            <a href={element.clone_url} target='_blank'> <div key={element.id} className={style.card}>
+            <div className={style.divH3}>
+                <h3>{element.name}</h3>
             </div>
+            <div className={style.divDoP}>
+                <span>{element.full_name}</span>    
+            </div>
+           </div>
+           </a>
         ))}
         </div>
   )
