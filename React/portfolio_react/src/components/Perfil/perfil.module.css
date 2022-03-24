@@ -1,8 +1,4 @@
-img{
-    width: 100%;
-    width: 200px;
-    border-radius: 50%;
-}
+
 main{
     margin:0 auto;
     text-align: center;   
@@ -25,7 +21,7 @@ main > div{
 }
 .basicInfo input , textarea{
     font-family:  'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-top: 4px;
+    margin: 10px 0 10px 0;
     padding: 4px;
     background-color:white ;
     border: 1px solid black;
@@ -40,4 +36,12 @@ label{
    display: block;
    text-align: center;
 
+}
+
+.fotoENome img{
+    width: 100%;
+    width: 200px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
 }

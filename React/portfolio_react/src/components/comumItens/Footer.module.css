@@ -9,7 +9,12 @@ footer{
 }
 img{
     width: 100%;
+    width: 40px;
+    margin-left: 15px;
+    
 }
-nav img{
-    width: 35px;
+ul ,nav , li{
+    
+    padding: 10px;
+    margin: 0;
 }
