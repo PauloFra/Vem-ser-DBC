@@ -13,10 +13,12 @@ function CrudProvider({ children }){
     var isBoolean = false;
    
     function adicionarAoCrud(e){
-        
         e.preventDefault();
-        if(nome == '' || email == '' || profissao == ''){
-             alert('Preecha todos os campos')
+        let validaVazio = nome == '' || email == '' || profissao == '';
+        let validaNome = nome.split('').some(el => el.toLowerCase('') === el.toUpperCase(''));
+        let dominio = email.includes('@dbccompany');
+        if(validaVazio || validaNome || !dominio){
+             alert('Preecha todos os campos corretamente')
         }
         
         else{        

@@ -1,0 +1,35 @@
+.divUser{
+    border: 1px solid black;
+    padding: 4px;
+    width: 600px;
+    border-radius: 9px;
+    display: grid;
+    text-align: left;
+    margin:  15px auto;
+    height: 300px;
+}
+ .divUser button{
+    font-size: 18px;
+    padding: 7px;
+    margin: 1px 0;
+    
+    border-radius: 5px;
+    border: none;
+}
+.divUser button:not(:hover){
+    color: black;
+    border:1px solid black;
+    transition: 0.4s;
+}
+
+.divUser button:hover {
+  background-color:black ;
+  border:1px solid black;
+  color: white;
+  transition: 0.4s;
+  }
+  .divUser button:active {
+    background-color: #b1fbb3;
+    box-shadow: 0 5px rgb(168, 157, 157);
+    transition: 0.4s;
+}
