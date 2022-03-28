@@ -26,6 +26,7 @@ function CrudProvider({ children }){
         setUsers([...users, { idUser:id , nome:nome, email:email ,profissao:profissao }]);
         id++;
         console.log(users);      
+
         }
             
     }

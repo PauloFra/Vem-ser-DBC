@@ -1,0 +1,49 @@
+section{
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+
+}
+.divLog{
+    width: 700px;
+    margin: 300px auto;
+    font-size: 30px;
+}
+form{
+    display: grid;
+    text-align: left;
+    border-radius: 9px;
+    border: 1px solid black;
+    padding: 20px;
+    
+}
+input{
+    margin: 10px 0;
+    font-size: 25px;
+    border-radius: 9px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(255, 253, 250);
+}
+button:not(:hover){
+    margin: 10px 0;
+    font-size: 25px;
+    padding: 10px;
+    background-color: white;
+    transition: 1s;
+    color: green;
+    border: 1px solid green ;
+    border-radius: 9px;
+
+}
+button:hover{
+    margin: 10px 0;
+    font-size: 25px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: 1px solid white ;
+    transition: 1s;
+    border-radius: 9px;
+    
+
+}
