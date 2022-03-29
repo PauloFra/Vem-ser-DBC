@@ -7,10 +7,10 @@ import style from './login.module.css'
 
 export default function Login() {
     //  const navigate = useNavigate();
-     const {ChamarLogin , token ,validaLogin} = useContext(ContextLogin);
+     const {ChamarLogin , token } = useContext(ContextLogin);
      console.log(token)
     // console.log(teste)
-    // {validaLogin && navigate('/logout')}
+    // { && navigate('/logout')}
     return (
    <section>
       <div className={style.divLog}>
