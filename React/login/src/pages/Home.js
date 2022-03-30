@@ -6,9 +6,11 @@ function Home() {
         redirect()
     },[])
   return (
-    <div>
+   <section>
+      <div>
         <h1>Home</h1>
     </div>
+   </section>
   )
 }
 

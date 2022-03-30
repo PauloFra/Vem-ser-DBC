@@ -1,10 +1,12 @@
-import React from 'react'
+import {React} from 'react'
 import NavMenu from './NavMenu'
+import style from './header.module.css'
+
 function Header() {
   return (
-    <footer>
+    <header>
         <NavMenu />
-    </footer>
+    </header>
   )
 }
 

@@ -3,13 +3,9 @@
 .App {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-font-family: 'Open Sans', sans-serif;
-font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
-a{
-  padding-left: 10px;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;

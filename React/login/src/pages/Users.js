@@ -1,17 +1,19 @@
-import {React , useEffect} from 'react'
-import { useContext } from 'react'
+import {React , useEffect ,useContext , useState} from 'react'
 import {ContextLogin} from '../context/Contexto.js'
 import { useNavigate } from "react-router-dom";
+import Loading from '../components/Loading.js';
 import moment from 'moment';
+import Erro from '../components/Erro.js';
+import style from './login.module.css'
 export default function Logout() {
-    const {Logout,redirect ,getPessoa ,pessoas} = useContext(ContextLogin);
-    
+    const {Logout,redirect ,getPessoa ,pessoas , load ,error} = useContext(ContextLogin);    
     useEffect(()=>{
-        redirect();
+        redirect();  
+        getPessoa();
     },[])
-    getPessoa();
+   
     console.log(pessoas)
-    
+
     
 
    const formatCpf = (cpf) => {
@@ -19,10 +21,18 @@ export default function Logout() {
       return cpf.slice(0,3) + "." + cpf.slice(3,6) + "." + cpf.slice(6,9) + "-" + cpf.slice(9,11)
   }
     // Verificar o token antes de logar em cada pagina , api que lista os usuarios na pagina users , deslogar funcional , Header e footer validando o token nos links
+    if(load){
+      return <Loading />
+    }
+    console.log(error)
+    if(error){
+      return (
+      <Erro />    
+      );
+  }
     return (
     <div>
-        <h1>Logout</h1>
-        <button onClick={Logout}>Logout</button>
+        <h1>Usuarios</h1>
         {pessoas.map(pessoa =>(
           <div key={pessoa.idPessoa}>
               <h2>{pessoa.nome}</h2>

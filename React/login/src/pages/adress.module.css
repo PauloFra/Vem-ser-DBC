@@ -1,50 +1,48 @@
-section{
+.divFormLocal{
     height: 88vh;
-    display: flex;
+    display: inline-block;
+    font-size: 10px;
+    margin: 50px auto;
     justify-content: center;
-    align-content: center;
 }
-section >div{
-    margin-top: 250px;   
-}
-.divLog{
-    width: 700px;
-    font-size: 20px;
-}
-.FormLogin{
+.formLocal{
     display: grid;
+    width: 600px;
     text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    border:1px solid black;
     border-radius: 9px;
-    border: 1px solid black;
-    padding: 20px;
-    
+    padding: 10px;
 }
-input{
+.formLocal input{
     margin: 10px 0;
     font-size: 20px;
+    height: 10px;
     border-radius: 9px;
-    border: none;
-    padding: 10px;
-    background-color: rgb(255, 253, 250);
+    background-color: rgb(251, 251, 251);
 }
-.FormLogin button:not(:hover){
+
+
+.formLocal  button:not(:hover){
     margin: 10px 0;
     font-size: 20px;
     padding: 5px;
     background-color: white;
     transition: 1s;
-    color: rgb(25, 66, 133);
-    border: 1px solid rgb(25, 66, 133) ;
+    color: black;
+    border: 1px solid black ;
     border-radius: 9px;
 
 }
-.FormLogin button:hover{
+.formLocal button:hover{
     margin: 10px 0;
     font-size: 20px;
     padding: 5px;
-    background-color: rgb(86, 93, 105);
+    background-color: black;
     color: white;
     border: 1px solid white ;
     transition: 1s;
     border-radius: 9px;
 }
+

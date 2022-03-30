@@ -1,6 +1,8 @@
 import { createContext , useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../api.js';
+import Loading from "../components/Loading.js";
+import Erro from "../components/Erro.js";
 
 export const ContextLogin = createContext();
 
@@ -9,6 +11,8 @@ function ContextProvider({children}){
     const [pessoas , setPessoas] = useState([])
     const [token , setToken] = useState('');
     const [isLogin , setIsLogin] = useState(false);
+    const [load , setLoad] = useState(true)
+    const [error , setError] = useState(false)
     
     useEffect(()=>{
         const token = localStorage.getItem('token');
@@ -18,6 +22,7 @@ function ContextProvider({children}){
         setIsLogin(true)
     },[])
 
+    
     async function ChamarLogin(values){
         try{
             const {data} = await api.post('/auth' , values);
@@ -27,16 +32,20 @@ function ContextProvider({children}){
         }
         catch(erro){
             console.log(erro)
+            
         }
     }
     async function getPessoa(){
         try {
             const {data} = await api.get('/pessoa');
+            setLoad(false)
+            setError(false)            
             setPessoas(data)
-           
         }
         catch(erro){
-            console.log(erro)
+            console.log(erro);
+            setLoad(false)
+            setError(true)
         }
     }
     function Logout(){
@@ -50,11 +59,16 @@ function ContextProvider({children}){
             navigate('/login')
         }
     }
+    
     if(!isLogin){
-        return (<div>Loading</div>) 
+        
+        return (
+            <Loading />
+        );
     }
+   
     return(
-        <ContextLogin.Provider value={{ChamarLogin , token , Logout ,redirect ,getPessoa ,pessoas , token}}>
+        <ContextLogin.Provider value={{ChamarLogin , token , Logout ,redirect ,getPessoa ,pessoas , token , load ,error}}>
             {children}
         </ContextLogin.Provider>
     )

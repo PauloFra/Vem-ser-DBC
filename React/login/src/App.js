@@ -12,6 +12,7 @@ import Logout from './pages/Users';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
+import Adress from './pages/Adress';
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path='/users' element={<Logout />} />
+            <Route path='/adress' element={<Adress />} />
           </Routes>
           <Footer />
           </ContextProvider>
