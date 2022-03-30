@@ -1,6 +1,44 @@
-section{
-    height: 88vh;
-    display: flex;
+.divDasPessoas{
+    display: grid;
+    grid-template-columns: auto ;
+    width: 1200px;
     justify-content: center;
-    align-content: center;
+    margin: 0 auto 50px auto;
+    gap: 50px;
+}
+.divPessoa{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 900px;
+    transition: 2s;
+}
+.divContent{
+    width: 100%;
+    background-color: rgb(246, 250, 250);
+    padding: 50px 0;
+}
+.bgDaPessoa{
+    color: white;
+    background-color: black;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    font-size: 14px;
+}
+.divPessoa strong{
+    margin-left: 20px;
+}
+.divPessoa p{
+    margin-right: 20px;
+}
+.divPessoa:hover{
+  background-color: rgb(224, 224, 224);
+  transition: 1s;
 }

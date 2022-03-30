@@ -20,7 +20,9 @@ function Adress() {
   let test = '01001000';
  async function getCep(){
     try{
-      const {data} = await apiviacep.get('ws/' + cep + '/json/')
+      let cepTratado = cep.split('-').join('');
+      cepTratado.toString()
+      const {data} = await apiviacep.get('ws/' + cepTratado + '/json/')
        
       const {bairro , ddd , localidade , logradouro , uf} = data;
       setDados({...dados , bairro:bairro , ddd:ddd , localidade:localidade , logradouro:logradouro , uf:uf}) 
@@ -33,13 +35,18 @@ function Adress() {
       console.log(erro)
     }
   }
-  function submitForm(){
-    setDados({...dados , numeroDaCasa:numeroCasa});
-    if(bairro === '' || numeroCasa === ''){
-      alert('Ops! Preencha os campos')
-    }else{
-      alert('Tudo Certo!')
-    } 
+
+    // function formatCep (cep){
+    //   return cep.slice(0,5) + "-" + cep.slice(5,8)
+    // }
+    
+    function submitForm(){
+      setDados({...dados , numeroDaCasa:numeroCasa});
+      if(bairro === '' || numeroCasa === ''){
+        alert('Ops! Preencha os campos')
+      }else{
+        alert('Tudo Certo!')
+      } 
   }
   return (
 
@@ -47,9 +54,9 @@ function Adress() {
          <h1>Endereço</h1>
            <form action="" className={style.formLocal} onSubmit={(e)=>e.preventDefault()}>
             <label htmlFor="">CEP:</label>
-            <input type="text" onChange={(e)=> setCep( e.target.value)}/>
+            <input type="text" maxlength="9" onChange={(e)=> setCep(e.target.value) }/>
             {/* <input type="text" onChange={(e)=> e.target.value = test}/>  */}
-           <button onClick={()=>getCep()}>Buscar por CPF</button>
+           <button onClick={()=>getCep()}>Buscar por CEP</button>
            <label htmlFor="">Bairro:</label>
            <input type="text" value={bairro} />
            <label htmlFor="">Localidade:</label>

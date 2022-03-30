@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Loading from '../components/Loading.js';
 import moment from 'moment';
 import Erro from '../components/Erro.js';
-import style from './login.module.css'
+import style from './users.module.css'
 export default function Logout() {
-    const {Logout,redirect ,getPessoa ,pessoas , load ,error} = useContext(ContextLogin);    
+    const {redirect ,getPessoa ,pessoas , load ,error} = useContext(ContextLogin);    
     useEffect(()=>{
         redirect();  
         getPessoa();
@@ -31,16 +31,22 @@ export default function Logout() {
       );
   }
     return (
-    <div>
+    <>
         <h1>Usuarios</h1>
+        <div className={style.divContent}>
+        <div className={style.divDasPessoas}> 
         {pessoas.map(pessoa =>(
-          <div key={pessoa.idPessoa}>
-              <h2>{pessoa.nome}</h2>
-              <p>{pessoa.email}</p>
-              <p>{formatCpf(pessoa.cpf)}</p>
-              <p>{moment(pessoa.dataNascimento).format('DD/MM/YYYY')}</p>
+          <div key={pessoa.idPessoa} className={style.divPessoa}>
+              <div className={style.bgDaPessoa}>
+                <h2>{pessoa.nome}</h2>
+              </div>
+              <p><strong>Email: </strong> {pessoa.email}</p>
+              <p><strong>CPF: </strong>{formatCpf(pessoa.cpf)}</p>
+              <p><strong>Data de Nascimento: </strong> {moment(pessoa.dataNascimento).format('DD/MM/YYYY')}</p>
           </div>
         ))}
        </div>
+       </div>
+    </>
   )
 }
