@@ -2,24 +2,28 @@ import { createContext , useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../api.js';
 import Loading from "../components/Loading.js";
-import Erro from "../components/Erro.js";
+
 
 export const ContextLogin = createContext();
 
 function ContextProvider({children}){
-    const navigate = useNavigate();
-    const [pessoas , setPessoas] = useState([])
-    const [token , setToken] = useState('');
-    const [isLogin , setIsLogin] = useState(false);
-    const [load , setLoad] = useState(true)
-    const [error , setError] = useState(false)
-    
     useEffect(()=>{
         const token = localStorage.getItem('token');
         if (token){
             api.defaults.headers.common['Authorization'] = token;
         }
-        setIsLogin(true)
+    },[])
+
+    const navigate = useNavigate();
+    const [pessoas , setPessoas] = useState([])
+    const [token , setToken] = useState('');
+    const [login , setLogin] = useState(true)
+    useEffect(()=>{
+        const token = localStorage.getItem('token');
+        if (token){
+            api.defaults.headers.common['Authorization'] = token;
+        }
+        setLogin(false)
     },[])
 
     
@@ -35,19 +39,6 @@ function ContextProvider({children}){
             
         }
     }
-    async function getPessoa(){
-        try {
-            const {data} = await api.get('/pessoa');
-            setLoad(false)
-            setError(false)            
-            setPessoas(data)
-        }
-        catch(erro){
-            console.log(erro);
-            setLoad(false)
-            setError(true)
-        }
-    }
     function Logout(){
         localStorage.removeItem('token');
         navigate('../login') 
@@ -59,16 +50,11 @@ function ContextProvider({children}){
             navigate('/login')
         }
     }
-    
-    if(!isLogin){
-        
-        return (
-            <Loading />
-        );
+    if(login){
+        return(<Loading />)
     }
-   
     return(
-        <ContextLogin.Provider value={{ChamarLogin , token , Logout ,redirect ,getPessoa ,pessoas , token , load ,error}}>
+        <ContextLogin.Provider value={{ChamarLogin ,Logout ,redirect  ,pessoas , token }}>
             {children}
         </ContextLogin.Provider>
     )

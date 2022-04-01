@@ -1,0 +1,24 @@
+.divMain{
+    height: 75vh;
+    display: inline-block;
+    font-size: 10px;
+    margin: 150px auto 0 auto;
+    justify-content: center;
+}
+.formLocal{
+    display: grid;
+    width: 600px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    border:1px solid black;
+    border-radius: 9px;
+    padding: 10px;
+}
+.formLocal input{
+    margin: 10px 0;
+    font-size: 20px;
+    height: 10px;
+    border-radius: 9px;
+    background-color: rgb(251, 251, 251);
+}
