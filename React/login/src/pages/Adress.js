@@ -47,6 +47,7 @@ function Adress() {
       }else{
         alert('Tudo Certo!')
         alert(JSON.stringify(dados));
+        console.table(dados)
       } 
   }
   return (

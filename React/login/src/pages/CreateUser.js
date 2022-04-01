@@ -48,6 +48,11 @@ function CreateUser() {
     }
     return (
     <div className={style.divMain}>
+        {atualizarId ?
+            <h1>Atualizar Usuario</h1> 
+        :
+             <h1>Adicionar Usuario</h1> 
+        }
      <div>
      <Formik
       initialValues={{

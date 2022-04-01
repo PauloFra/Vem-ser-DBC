@@ -31,11 +31,12 @@ function ContextProvider({children}){
             const {data} = await api.post('/auth' , values);
             setToken(data);
             localStorage.setItem('token' , data);  
-            navigate('../users')     
+            navigate('../users')   
+            window.location.reload(false);  
         }
         catch(erro){
             console.log(erro)
-            
+            alert('usuario ou senha invalido')
         }
     }
     function Logout(){
