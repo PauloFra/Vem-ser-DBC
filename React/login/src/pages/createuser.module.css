@@ -22,3 +22,26 @@
     border-radius: 9px;
     background-color: rgb(251, 251, 251);
 }
+.formLocal button{
+    
+    margin: 2px 0;
+    font-size: 20px;
+    padding: 5px;
+    border: 1px solid black ;
+    transition: 1s;
+    border-radius: 3px;
+
+}
+.btnAtt:not(:hover){
+    background-color:white;
+  
+}
+.btnAtt:hover{
+    background-color: rgb(97, 134, 255);
+}
+.btnAdd:not(:hover){
+    background-color:white;
+}
+.btnAdd:hover{
+    background-color: rgba(133, 255, 137, 0.998);
+}

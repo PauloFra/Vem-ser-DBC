@@ -3,7 +3,7 @@ import imgLoad from '../imgs_gifs/loading.gif'
 function Loading() {
   return (
    <>
-        <img src={imgLoad} alt="loading" />
+       <div> <img src={imgLoad} alt="loading" /></div>
     </>
   )
 }

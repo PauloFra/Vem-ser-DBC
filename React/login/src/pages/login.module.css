@@ -36,7 +36,6 @@ input{
     color: rgb(25, 66, 133);
     border: 1px solid rgb(25, 66, 133) ;
     border-radius: 9px;
-
 }
 .FormLogin button:hover{
     margin: 10px 0;

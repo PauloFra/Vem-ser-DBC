@@ -10,5 +10,4 @@ function Erro() {
     </div>
   )
 }
-
 export default Erro

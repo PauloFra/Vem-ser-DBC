@@ -4,13 +4,7 @@ import {ContextLogin} from '../context/Contexto.js'
 
 import style from './login.module.css'
 export default function Login() {
-    //  const navigate = useNavigate();
      const {ChamarLogin , token , error , load} = useContext(ContextLogin);
-     console.log(token)
-    // console.log(teste)
-    // { && navigate('/logout')}
-  
-
     return (
    <section>
      <div>

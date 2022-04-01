@@ -86,11 +86,11 @@ function CreateUser() {
         <br />
         {atualizarId ?
         <>
-            <button type="submit">Atualizar</button>
+            <button className={style.btnAtt} type="submit">Atualizar</button>
         </>
         :
         <>
-            <button type="submit">Adicionar</button>
+            <button className={style.btnAdd} type="submit">Adicionar</button>
         </>
         }
       </Form>

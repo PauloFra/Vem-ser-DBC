@@ -25,7 +25,6 @@ function ContextProvider({children}){
         }
         setLogin(false)
     },[])
-
     
     async function ChamarLogin(values){
         try{
@@ -58,6 +57,5 @@ function ContextProvider({children}){
             {children}
         </ContextLogin.Provider>
     )
-
 }
 export default ContextProvider;
