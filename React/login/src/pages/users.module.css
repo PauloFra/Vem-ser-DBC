@@ -42,3 +42,24 @@
   background-color: rgb(224, 224, 224);
   transition: 1s;
 }
+.divPessoa button:not(:hover){
+    margin: 2px 0;
+    font-size: 20px;
+    padding: 5px;
+    background-color: white;
+    transition: 1s;
+    color: black;
+    border: 1px solid black ;
+    border-radius: 15px;
+    
+}
+.divPessoa button:hover{
+    margin: 2px 0;
+    font-size: 20px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border: 1px solid white ;
+    transition: 1s;
+    border-radius: 15px;
+}

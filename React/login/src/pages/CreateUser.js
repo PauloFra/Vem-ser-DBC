@@ -2,6 +2,7 @@ import {React , useState , useEffect , useContext} from 'react'
 import style from './createuser.module.css'
 import { UserContext } from '../context/UserContext';
 import { Formik , Field, Form } from 'formik';
+import { ContextLogin } from '../context/Contexto';
 import Loading from '../components/Loading';
 import Erro from '../components/Erro';
 
@@ -12,25 +13,15 @@ import moment from 'moment';
 function CreateUser() {
     const location = useLocation();
     const {arrayPessoas , setArrayPessoas} = useContext(UserContext);
+    const {redirect} = useContext(ContextLogin);
     const [atualizarId , setAtualizarId] = useState(location.pathname.substring('13'));
     const [array , setArray] = useState([]);
     console.log(arrayPessoas);
 
-    // useEffect(()=>{
-    //     if(atualizarId){
-    //     GetPessoaId();
-    //     }
-    // },[]);
-    // async function GetPessoaId(){
-    //         try{
-    //             const {data} = await api.get(`pessoa/{idPessoa}?idPessoa=${atualizarId}`);
-    //             setArray(data);
-    //             // const {nome ,cpf , email , dataNascimento} = array;
-    //         }catch(erro){
-    //             console.log(erro)
-    //         }
-    //     }
-    
+    useEffect(()=>{
+        redirect()
+    },[]);
+
     async function CreateNewUser(values){
         try{
             const {nome , email ,cpf ,dataNascimento} = values;
@@ -46,7 +37,9 @@ function CreateUser() {
 
     async function AtualizarUsuario(values){
         try{
-            const {data} = await api.put(`pessoa/${atualizarId}` , values)
+            const {nome , email ,cpf ,dataNascimento} = values;
+            let newDate = moment(dataNascimento , 'DD/MM/YYYY').format('YYYY-MM-DD');  
+            const {data} = await api.put(`pessoa/${atualizarId}` ,{nome:nome , email:email ,cpf:cpf , dataNascimento:newDate });
             alert('Usuario Foi Atualizado')
             setArrayPessoas([]);
         }catch(erro){

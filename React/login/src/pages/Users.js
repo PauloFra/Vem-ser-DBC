@@ -40,6 +40,7 @@ export default function Logout() {
     
     function Atualizar(arr){
       navigate(`/create-user/${arr.idPessoa}`);
+      arr.dataNascimento = moment(arr.dataNascimento ,'YYYY-MM-DD' ).format('DD/MM/YYYY');
       setArrayPessoas(arr);
       console.log(arrayPessoas);
     }
