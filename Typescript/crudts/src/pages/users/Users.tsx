@@ -1,13 +1,18 @@
-import React from 'react'
+
 import { useContext , useEffect} from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { PessoasDTO } from '../../modal/PessoasDTO';
+import ListaUsers from '../../components/ListaUsers/ListaUsers';
 function Users() {
-  const {redirectUser} = useContext<any>(AuthContext);
+  const {getInPessoa , arrayPessoas} = useContext<any>(AuthContext);
   useEffect(()=>{
-    redirectUser()
+    getInPessoa()
   },[])
+  console.log(arrayPessoas)
   return (
-    <div>Users</div>
+  <div>
+    <ListaUsers pessoas={arrayPessoas}/> 
+  </div>
   )
 }
 

@@ -1,19 +1,40 @@
+
 import { Formik , Field , Form , FormikHelpers} from "formik"
 import { LoginDTO } from "../../modal/LoginDTO"
+import FotoDbc from './download.png'
 import {
-  DivForm,
+  DivLogo,
+  DivCenter,
+  InputForm,
+  BotaoForm,
   TitleLogin,
+  DivBeforeForm,
   ContainerLogin
 } from './Login.style'
-
-import {useContext} from 'react'
+import { useNavigate } from "react-router-dom"
+import {useContext , useEffect} from 'react'
 import { AuthContext } from "../../context/AuthContext"
 function Login() {
+  const navigate = useNavigate()
   const {handleLogin} = useContext<any>(AuthContext);
-  
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if(token){
+      navigate('/')
+    }
+},[])
   return (
     <ContainerLogin>
-      <TitleLogin>Login Vemser</TitleLogin>
+     
+     <DivCenter>
+      <DivLogo>
+       <img src={FotoDbc} width="48" alt="" />
+       <p>Dashboard kit</p>
+       </DivLogo>
+     
+     <TitleLogin>Login Vemser</TitleLogin>
+    <p>Enter your user and password below</p>
+    
       <Formik
       initialValues={{
         usuario:'',
@@ -27,17 +48,20 @@ function Login() {
       }}
       >
         <Form>
-        <DivForm>
-            <label htmlFor="usuario">Usuario:</label>
-            <Field name="usuario" id="usuario" placeholder="Digite o nome do usuário"/>
-          </DivForm>
-          <DivForm>
-            <label htmlFor="senha">Senha:</label>
-            <Field name="senha" id="senha" placeholder="Digite senha do usuário"/>
-          </DivForm>
-          <button type="submit">Entrar</button>
-        </Form>        
+            <DivBeforeForm>
+              <label htmlFor="usuario">USUARIO</label>
+              <Field  name="usuario" id="usuario" placeholder="Digite o nome do usuário" as={InputForm}/>
+              <label htmlFor="senha">SENHA</label>
+              <Field name="senha" type="password" id="senha" placeholder="Digite senha do usuário" as={InputForm}/>
+              {/* <button>*</button> */}
+              <BotaoForm type="submit">Log in</BotaoForm>
+            </DivBeforeForm>  
+        </Form>    
+          
       </Formik>
+      <p>Dont have an account? <a href="">Sing up</a></p>
+     </DivCenter>
+      
     </ContainerLogin>
   )
 }

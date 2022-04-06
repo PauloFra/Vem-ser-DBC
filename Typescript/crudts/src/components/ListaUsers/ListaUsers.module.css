@@ -1,0 +1,58 @@
+.divDaLista{
+    border-radius: 10px;
+    background-color: white;
+    margin: 35px 0;
+    border: 1px solid #DFE0EB;
+}
+.mainTable{
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+}
+.secondHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mainTable th{
+  padding: 30px 0 30px 30px;
+  border-top: 1px solid #DFE0EB;
+  font-weight: normal;
+}
+.secondHeader li{
+    display: inline;
+    margin-left: 10px;
+}
+.secondHeader div , h4 ,h2{
+    margin: 0;
+}
+.bigContent{
+    width: 1550px;
+    padding: 25px 40px;
+    font-size: 20px;
+    color: #252733;
+    background-color: #F7F8FC;  
+}
+.headerTable{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 30px;
+}
+.headerTable li{
+    display: inline;
+    margin-left: 20px;
+}
+thead tr{
+    padding: 0;
+}
+.cabeçalhoTable th{
+    padding-bottom: 10px;
+    border-top: none;
+    color: #9FA2B4;
+    font-weight: bold;
+}
+.mainTable tr:hover{
+    background-color: #dcdcdc;
+    transition: 0.4s;
+  }

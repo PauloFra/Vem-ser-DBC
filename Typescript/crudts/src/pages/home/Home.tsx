@@ -1,5 +1,6 @@
 import React from 'react'
 import { useContext , useEffect} from 'react'
+import { Navigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { 
   Card,
@@ -7,10 +8,8 @@ import {
   CardTitle
 } from './Home.style'
 function Home() {
-  const {redirectUser ,handleLogout} = useContext<any>(AuthContext)
-  useEffect(()=>{
-    redirectUser()
-  },[])
+  const {handleLogout} = useContext<any>(AuthContext)
+ 
   return (
     <Container>
       <Card>
@@ -18,11 +17,7 @@ function Home() {
       </Card>
       <Card>
         <CardTitle>Endereço</CardTitle>
-      </Card>
-      <Card>
-        <button onClick={()=> handleLogout() }>Logout</button>
-      </Card>
-     
+      </Card> 
     </Container>
   )
 }
