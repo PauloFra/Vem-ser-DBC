@@ -66,3 +66,12 @@ export const BotaoForm = styled.button`
     margin: 10px 0;
     border-radius: 6px;
 `
+export const BtnChangeType = styled.a`
+   position: absolute;
+   margin:128px 0 0 350px;
+   background-color: transparent;
+   border: transparent;
+   :hover{
+       color: blue;
+   }
+`

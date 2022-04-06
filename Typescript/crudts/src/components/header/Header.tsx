@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import { Link } from 'react-router-dom';
 import Foto from './Ellipse.png'
 
-import './header.module.css';
+import style from './header.module.css';
 
 import { AuthContext } from '../../context/AuthContext';
 function Header() {
@@ -13,11 +13,9 @@ function Header() {
     <>
     {isToken &&
     <header>
-      <div className='ulLogo'>
-
+      <div className={style.ulLogo}>
           <img src={Foto} alt="" />
           <Link to="">DashBoard</Link>
-       
        </div>
         <ul>
             <Link to={'/'}>
@@ -32,7 +30,7 @@ function Header() {
             </Link>
             <Link to={'/address'}>
               <li>
-                address
+                Address
               </li>
             </Link>
             <li onClick={()=>handleLogout()}>

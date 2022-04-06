@@ -1,6 +1,16 @@
 import React from 'react'
 import style from './ListaUsers.module.css'
+import usuarioDefault from './userdefault.png'
+import pic from './pic.png'
 import { PessoasDTO } from '../../modal/PessoasDTO'
+import { 
+    IoMdMore,
+    IoMdSearch,
+    IoMdNotifications,
+    IoMdFunnel,
+    IoMdReturnLeft
+
+} from "react-icons/io";
 function ListaUsers({pessoas}:PessoasDTO) {
   return (
     <>
@@ -9,18 +19,21 @@ function ListaUsers({pessoas}:PessoasDTO) {
         <h2>Tickets</h2>
         <div className={style.secondHeader}>
             <ul>
-                <li><a href="">Lupa</a></li>
-                <li><a href="">sino</a></li>
-                <li><a href="">Nome Usuario</a></li>
+                <li><a href=""><IoMdSearch /></a></li>
+                <li><a href=""><IoMdNotifications /></a></li>
             </ul>
+            <div className={style.nameAndFoto}>
+                <h5>Nome do Usuario</h5>
+                <a href=""><img src={pic} alt="" /></a>
+            </div>
         </div>
     </div>
       <div className={style.divDaLista}>
         <div className={style.headerTable}>
             <h2>All Tickets</h2>
             <ul>
-                <li><a href="">Lupa</a></li>
-                <li><a href="">sino</a></li>
+                <li><a href=""><IoMdReturnLeft /> Filter</a></li>
+                <li><a href=""><IoMdFunnel /> Sort</a></li>
             </ul>
         </div>
         <table className={style.mainTable}>
@@ -30,6 +43,7 @@ function ListaUsers({pessoas}:PessoasDTO) {
                     <th>Email</th>
                     <th>CPF</th>
                     <th>Data de Nascimento</th>
+
                 </tr>
            </thead>
             {pessoas.map((pessoa,ind)=>(
@@ -47,6 +61,7 @@ function ListaUsers({pessoas}:PessoasDTO) {
                     <th>
                         {pessoa.dataNascimento}
                     </th>
+                    <th><IoMdMore /></th>
                     </tr>
                     </tbody>
             ))}
