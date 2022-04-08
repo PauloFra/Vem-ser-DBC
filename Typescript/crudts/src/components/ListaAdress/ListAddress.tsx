@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import style from '../../CommunCss/tableList.module.css'
 import { MaskCpf } from '../../Utils';
+import { EnderecoDTO } from '../../modal/ContatoDTO';
 import SubHeader from '../SubHeader/SubHeader';
 import api from '../../api';
 import { 
@@ -12,12 +13,16 @@ import {
   IoMdReturnLeft
 } from "react-icons/io";
 function ListAddress() {
-  const {arrayEndereço ,getInEndereço} = useContext<any>(AuthContext)
+  const {arrayEndereço ,getInEndereço , objEndereco , setObjEndereco} = useContext<any>(AuthContext)
   
   useEffect(()=>{
     getInEndereço()   
   },[])
   
+  function setEndereco(values:EnderecoDTO){
+    setObjEndereco(values)
+  }
+
   const removeEndereco = async (idEndereco:number) => {
     try{
         const {data} = await api.delete(`/endereco/${idEndereco}`)
@@ -37,7 +42,7 @@ function ListAddress() {
     </div>
       <div className={style.divDaLista}>
         <div className={style.headerTable}>
-            <h2>All Contacts</h2>
+            <h2>Todos os endereços</h2>
             <ul>
                 <li><a href=""><IoMdReturnLeft /> Filter</a></li>
                 <li><a href=""><IoMdFunnel /> Sort</a></li>
@@ -88,7 +93,7 @@ tipo: "RESIDENCIAL"
                     </th>
                      <th>
                      <div  className={style.divFlex}>
-                        <Link to={`/address/${element.idEndereco}`}> 
+                        <Link to={`/address/${element.idEndereco}`} onClick={()=>{setEndereco(element)}}> 
                             <div className={style.divEdit}>
                                 <IoIosColorWand />
                             </div>

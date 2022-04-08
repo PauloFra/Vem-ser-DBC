@@ -3,14 +3,38 @@ import { LoginDTO } from '../modal/LoginDTO'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
 import { PessoasDTO } from '../modal/PessoasDTO'
+import { EnderecoDTO } from '../modal/ContatoDTO'
 import { EnderecoSwaggerDTO } from '../modal/ContatoDTO'
+import { PessoaDTO } from '../modal/PessoaDTO'
 
 export const AuthContext = createContext({})
 
 const AuthProvider:FC<ReactNode> = ({children}) => {
     const [isToken , setIsToken] = useState(false)
     const [loading , setLoading] = useState<boolean>(true)
+    
     const [arrayPessoas , setArrayPessoas] = useState<PessoasDTO['pessoas']>([])
+    
+    const [objPessoa , setObjPessoa] = useState<PessoaDTO>({
+        nome: '',
+        email: '',
+        cpf: '',
+        dataNascimento: '',       
+        })
+
+    const [objEndereco , setObjEndereco] = useState<EnderecoDTO>({
+        cep: '',
+        logradouro: '',
+        bairro: '',
+        localidade: '',
+        complemento:'',
+        uf: '',
+        pais: '',
+        tipo: '',
+        numero:''
+    }
+    )
+    
     const [arrayEndereço , setArrayEndereço] = useState<EnderecoSwaggerDTO>()
     const navigate = useNavigate()
 
@@ -31,6 +55,7 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
         navigate('/login')
     }
     const handleLogin = async(user:LoginDTO) =>{
+        //Funçao de logar e adicionar permissao ao usuario para fazer requests
         try{
             const {data} = await api.post('/auth' , user)
             setIsToken(true)
@@ -46,6 +71,7 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
         }
     }
     const getInPessoa = async() =>{
+        //get em todas as pessoas  
         try{
             const {data} = await api.get('/pessoa')
             setArrayPessoas(data)
@@ -55,6 +81,7 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
     }
 
     const getInEndereço = async()=>{
+        //get em todos os endereços
         try{
             const {data} = await api.get('endereco')
             setArrayEndereço(data)
@@ -68,7 +95,7 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
         return(<h1>Loading</h1>)
     }
     return (
-    <AuthContext.Provider value={{handleLogin  , handleLogout,isToken,getInPessoa,arrayPessoas ,setArrayEndereço ,arrayEndereço ,getInEndereço}}>
+    <AuthContext.Provider value={{handleLogin  , handleLogout,isToken,getInPessoa,arrayPessoas ,setArrayEndereço ,arrayEndereço ,getInEndereço ,objPessoa , setObjPessoa ,objEndereco , setObjEndereco}}>
         {children}
     </AuthContext.Provider>
   )

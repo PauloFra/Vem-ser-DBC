@@ -13,6 +13,8 @@ export const ContainerLogin = styled.div`
     font-weight:bold;
     color:#898989 ;
     
+    
+    
 `
 export const TitleLogin = styled.h1`
     font-size: 40px;
@@ -73,4 +75,26 @@ export const BtnChangeType = styled.a`
    :hover{
        color: blue;
    }
+`
+export const ContainerLoginForSetUser = styled.div`
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    background-color: #F7F8FC;
+    justify-content: center;
+    min-height: 100%;
+    width: 1618px;
+    align-items: center;
+    font-weight:bold;
+    color:#898989 ;
+`
+export const DivCenterForUser = styled.div`
+   background-color: white;
+   padding: 30px;
+   border-radius: 8px;
+
+   width: 60% ;
+   margin: 120px 0;
+   border: 1px solid #9FA2B4;
 `

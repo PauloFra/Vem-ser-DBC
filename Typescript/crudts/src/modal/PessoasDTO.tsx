@@ -9,6 +9,8 @@ export interface PessoasDTO{
     }[]
 }
 
+
+
 // export interface PeopleDTO {
 //     people:{
 //         nome: string

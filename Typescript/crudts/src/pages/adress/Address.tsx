@@ -17,7 +17,7 @@ import {
   BotaoForm,
   TitleLogin,
   DivBeforeForm,
-  ContainerLogin
+  ContainerLoginForSetUser
 } from '../../CommunCss/Login.style'
 import './Adress.css'
 
@@ -34,13 +34,17 @@ import './Adress.css'
 // }
 
    function Address() {  
+
+    const {handleLogout , objEndereco} = useContext<any>(AuthContext)
+
     const {idEndereco} = useParams()
     console.log('UseParam =>', idEndereco )
 
+    const [arrContato , setArrContato ] = useState<any>([])
     
-    const [arrContato , setArrContato] = useState<any>([])
     const setup = async() => {
-        if(idEndereco){
+    //Get No Endereço especifico em base no id do useParams
+      if(idEndereco){
           try{
             const {data} = await api.get(`endereco/${idEndereco}`)
             console.log(data)
@@ -53,9 +57,8 @@ import './Adress.css'
         }
     }
 
-    const {handleLogout} = useContext<any>(AuthContext)
-
     async function BuscaCep(values:EnderecoDTO ,setFieldValue:any){
+      //get na api do viaCep para adicionar os valores nos inputs via setFieldValue
       try{
         const {data} = await axios.get(`https://viacep.com.br/ws/${values.cep}/json/`);   
         setFieldValue('logradouro' , data.logradouro)
@@ -71,6 +74,7 @@ import './Adress.css'
  
     async function PostInEndereco(values:EnderecoDTO){
       let idPessoa = 658
+      //Post na api do Maicon com os dados dos inputs
 
       const newAddress = {
         cep:values.cep.replaceAll('-' , ''),
@@ -93,6 +97,7 @@ import './Adress.css'
     }
 
     const atualizarEndereco = async(values:EnderecoDTO) => {
+      //Update na api com os novos valores
       const newAddress = {
         idEndereco: idEndereco,
         cep:values.cep.replaceAll('-' , ''),
@@ -104,7 +109,6 @@ import './Adress.css'
         tipo: values.tipo,
         numero: parseInt(values.numero)
       }
-
       try{
         const {data} = await api.put(`endereco/${idEndereco}` ,newAddress )
         console.log(data)
@@ -113,13 +117,18 @@ import './Adress.css'
         console.log(error); 
         alert('Ops!')
       }
-    }
+}
 
+    console.log('Array Endereços', arrContato.cep);
+    
   useEffect(()=>{
     setup()
   },[])
+  // function handleUpdate(setFieldValue:any){
+  //   setFieldValue( , arrContato.cep)
+  // }
   return (
-    <ContainerLogin  className='divBg'>
+    <ContainerLoginForSetUser  className='divBg'>
       <DivCenter className='divMaior'>
       <DivLogo>
        <img src={FotoDbc} width="48" alt="" />
@@ -128,8 +137,23 @@ import './Adress.css'
       <TitleLogin>{idEndereco ?'Atualize o ' :'Adicione um Novo'} Endereço</TitleLogin>
       <p>Entre com os dados abaixo</p>
            
-      <Formik
-        initialValues={
+      <Formik 
+       
+        initialValues={ 
+          idEndereco 
+          ?
+          {
+            cep: objEndereco.cep,
+            logradouro: objEndereco.logradouro,
+            bairro: objEndereco.bairro,
+            localidade: objEndereco.localidade,
+            uf: objEndereco.uf,
+            tipo: objEndereco.tipo,
+            pais: objEndereco.pais,
+            numero: objEndereco.numero,
+            complemento: objEndereco.complemento
+          }
+          :
           {
             cep: '',
             logradouro: '',
@@ -151,10 +175,10 @@ import './Adress.css'
       >
         {props =>(
 
-       
-        <Form>
+        <Form >
             <DivBeforeForm>
           <label htmlFor="cep">CEP</label>
+          
           <Field id="cep" name="cep" placeholder="Cep"  as={InputForm}/>
 
           <button className='btnConsultaCep' type='button' onClick={()=>BuscaCep(props.values , props.setFieldValue)}>Consulta Cep</button>
@@ -169,7 +193,7 @@ import './Adress.css'
           <Field id="localidade" name="localidade" placeholder="localidade" as={InputForm} />
 
           <label htmlFor="uf">UF</label>
-          <Field id="uf" name="uf" placeholder="uf"  as={InputForm}/>
+          <Field id="uf" name="uf" placeholder="uf" as={InputForm}/>
 
           <label htmlFor="pais">PAIS</label>
           <Field id="pais" name="pais" placeholder="pais"  as={InputForm}/>
@@ -191,7 +215,7 @@ import './Adress.css'
          )}
       </Formik>
       </DivCenter>
-    </ContainerLogin>
+    </ContainerLoginForSetUser>
   )
 }
 

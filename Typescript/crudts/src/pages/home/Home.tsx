@@ -1,6 +1,4 @@
-import React from 'react'
 import { useContext , useEffect} from 'react'
-import { Navigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { 
   Card,
@@ -13,10 +11,15 @@ function Home() {
   return (
     <Container>
       <Card>
-        <CardTitle>Usuarios</CardTitle>
+        <CardTitle>
+          <h3>Total de usuarios</h3>
+        </CardTitle>
       </Card>
       <Card>
-        <CardTitle>Endereço</CardTitle>
+        <CardTitle>
+          <h3>Total de usuarios</h3>
+          <p></p>
+        </CardTitle>
       </Card> 
     </Container>
   )

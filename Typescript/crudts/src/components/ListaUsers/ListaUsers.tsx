@@ -1,9 +1,10 @@
-
+import { useContext } from 'react';
 import style from '../../CommunCss/tableList.module.css'
 import SubHeader from '../SubHeader/SubHeader';
 import { PessoasDTO } from '../../modal/PessoasDTO'
 import { Link } from 'react-router-dom';
 import api from '../../api';
+import { AuthContext } from '../../context/AuthContext';
 import { 
     IoIosColorWand,
     IoMdSearch,
@@ -14,7 +15,12 @@ import {
 } from "react-icons/io";
 
 function ListaUsers({pessoas}:PessoasDTO) {
+    const {objPessoa , setObjPessoa} = useContext<any>(AuthContext)
 
+    function setPessoa(values:any){
+        setObjPessoa(values)
+        console.log(objPessoa)
+    }
     const removePessoa = async(idPessoa:number) =>{
         try{
             const {data} = await api.delete(`/pessoa/${idPessoa}`)
@@ -34,7 +40,7 @@ function ListaUsers({pessoas}:PessoasDTO) {
     </div>
       <div className={style.divDaLista}>
         <div className={style.headerTable}>
-            <h2>All Tickets</h2>
+            <h2>Todos os usuarios</h2>
             <ul>
                 <li><a href=""><IoMdReturnLeft /> Filter</a></li>
                 <li><a href=""><IoMdFunnel /> Sort</a></li>
@@ -67,7 +73,7 @@ function ListaUsers({pessoas}:PessoasDTO) {
                 </th>
                 <th className={style.textCenter}>
                     <div  className={style.divFlex}>
-                        <Link to={`/set-users/${pessoa.idPessoa}/`}> 
+                        <Link to={`/set-users/${pessoa.idPessoa}/`} onClick={() => setPessoa(pessoa)}> 
                             <div className={style.divEdit}>
                                 <IoIosColorWand />
                             </div>
