@@ -81,3 +81,41 @@ thead tr{
     color: #9FA2B4;
     text-decoration: none;
 }
+tbody a{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color:#252733;
+}
+.divFlex{
+    display: flex;
+    font-size: 30px;
+    width: 200px;
+    color: white;
+  
+}
+.divEdit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #29CC97;
+    border-radius: 30px;
+    padding: 2px;
+    width: 65px;
+    color: white;
+}
+.divRemove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F12B2C;
+    border-radius: 30px;
+    padding: 2px;
+    margin-left: 20px;
+    width: 65px;
+    color: white;
+  
+}
+.textCenter{
+    margin-left: 33px;
+}

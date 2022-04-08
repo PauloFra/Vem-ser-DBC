@@ -49,7 +49,6 @@ export const InputForm = styled.input`
 export const DivCenter = styled.div`
    background-color: white;
    width: 380px;
-   height: 582px;
    padding: 30px;
    border-radius: 8px;
 `

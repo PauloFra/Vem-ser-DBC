@@ -2,6 +2,7 @@
 import { Formik , Field , Form , FormikHelpers} from "formik"
 import { LoginDTO } from "../../modal/LoginDTO"
 import FotoDbc from './download.png'
+
 import {
   BtnChangeType,
   DivLogo,
@@ -11,7 +12,8 @@ import {
   TitleLogin,
   DivBeforeForm,
   ContainerLogin
-} from './Login.style'
+} from '../../CommunCss/Login.style'
+
 import { useNavigate } from "react-router-dom"
 import {useContext , useEffect , useState} from 'react'
 import { AuthContext } from "../../context/AuthContext"
@@ -39,7 +41,7 @@ const changeType = () =>{
       <DivLogo>
        <img src={FotoDbc} width="48" alt="" />
        <p>Painel De Controle kit</p>
-       </DivLogo>
+      </DivLogo>
      
      <TitleLogin>Login Vemser</TitleLogin>
     <p>Entre com seu usuario e senha abaixo</p>
@@ -63,7 +65,7 @@ const changeType = () =>{
               <label htmlFor="senha">SENHA</label>
               <Field name="senha" type={inputValue} id="senha" placeholder="Digite senha do usuário" as={InputForm} />
               <BtnChangeType onMouseDown={()=>changeType()}>?</BtnChangeType>
-              <BotaoForm type="submit">Log in</BotaoForm>
+              <BotaoForm type="submit">Entrar</BotaoForm>
             </DivBeforeForm>  
         </Form>    
           

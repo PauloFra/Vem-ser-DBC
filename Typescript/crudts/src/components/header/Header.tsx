@@ -23,18 +23,28 @@ function Header() {
                 Home
               </li>
             </Link>
+            <Link to={'/set-users'}>
+              <li>
+                Usuarios
+              </li>
+            </Link>
             <Link to={'/users'}>
               <li>
-                Users
+                Lista de Usuarios
               </li>
             </Link>
             <Link to={'/address'}>
               <li>
-                Address
+                Endereço
               </li>
             </Link>
-            <li onClick={()=>handleLogout()}>
-               <a >Logout</a>
+            <Link to={'/list-address'}>
+              <li>
+                Lista de Endereços
+              </li>
+            </Link>
+            <li onClick={()=>handleLogout()} >
+               <a>Deslogar</a>
             </li>
         </ul>
     </header>

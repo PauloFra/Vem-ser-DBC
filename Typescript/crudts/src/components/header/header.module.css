@@ -1,5 +1,5 @@
 header{
-    width: 15%;
+    min-width: 15%;
     min-height: 1220px;
     background-color: #363740;
     color: #DDE2FF;
@@ -31,6 +31,8 @@ header ul{
     padding: 0;
 
 }
-header img{
-    margin-right: 10px;
-}
+/* header li:checked{
+    background-color: #9FA2B4;
+    transition: 0.3s;
+    border-left: 4px solid #DDE2FF;
+   } */

@@ -1,32 +1,36 @@
-import React from 'react'
-import style from './ListaUsers.module.css'
-import usuarioDefault from './userdefault.png'
-import pic from './pic.png'
+
+import style from '../../CommunCss/tableList.module.css'
+import SubHeader from '../SubHeader/SubHeader';
 import { PessoasDTO } from '../../modal/PessoasDTO'
+import { Link } from 'react-router-dom';
+import api from '../../api';
 import { 
-    IoMdMore,
+    IoIosColorWand,
     IoMdSearch,
-    IoMdNotifications,
+    IoMdTrash,
     IoMdFunnel,
     IoMdReturnLeft
 
 } from "react-icons/io";
+
 function ListaUsers({pessoas}:PessoasDTO) {
+
+    const removePessoa = async(idPessoa:number) =>{
+        try{
+            const {data} = await api.delete(`/pessoa/${idPessoa}`)
+            alert('Usuario Deletado')
+            document.location.reload();
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
   return (
     <>
     <div className={style.bigContent}>
     <div className={style.secondHeader}>
         <h2>Tickets</h2>
-        <div className={style.secondHeader}>
-            <ul>
-                <li><a href=""><IoMdSearch /></a></li>
-                <li><a href=""><IoMdNotifications /></a></li>
-            </ul>
-            <div className={style.nameAndFoto}>
-                <h5>Nome do Usuario</h5>
-                <a href=""><img src={pic} alt="" /></a>
-            </div>
-        </div>
+        <SubHeader />
     </div>
       <div className={style.divDaLista}>
         <div className={style.headerTable}>
@@ -43,27 +47,46 @@ function ListaUsers({pessoas}:PessoasDTO) {
                     <th>Email</th>
                     <th>CPF</th>
                     <th>Data de Nascimento</th>
-
+                    <th>Atualizar / Remover</th>
                 </tr>
            </thead>
             {pessoas.map((pessoa,ind)=>(
-                <tbody key={ind}>
-                    <tr >
-                    <th>
-                        {pessoa.nome}
-                    </th>
-                    <th>
-                        {pessoa.email}
-                    </th>
-                    <th>
-                        {pessoa.cpf}
-                    </th>
-                    <th>
-                        {pessoa.dataNascimento}
-                    </th>
-                    <th><IoMdMore /></th>
-                    </tr>
-                    </tbody>
+                <tbody key={ind}>              
+                <tr>
+                <th>    
+                    {pessoa.nome}
+                </th>    
+                <th>  
+                    {pessoa.email}
+                </th>
+                <th>
+                    {pessoa.cpf}
+                </th>
+                <th>
+                    {pessoa.dataNascimento}
+                </th>
+                <th className={style.textCenter}>
+                    <div  className={style.divFlex}>
+                        <Link to={`/set-users/${pessoa.idPessoa}/`}> 
+                            <div className={style.divEdit}>
+                                <IoIosColorWand />
+                            </div>
+                        </Link> 
+
+                        <a onClick={()=>{removePessoa(pessoa.idPessoa)}} href="#">
+                            <div  className={style.divRemove}>
+                                <IoMdTrash /> 
+                            </div>
+                        </a>
+                        
+                    </div> 
+                </th>
+                
+                </tr>
+                
+                </tbody>
+                    
+              
             ))}
             </table>
       </div>
