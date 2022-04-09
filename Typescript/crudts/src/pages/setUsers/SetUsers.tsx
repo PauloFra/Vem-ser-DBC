@@ -4,8 +4,8 @@ import { AuthContext } from '../../context/AuthContext'
 import api from '../../api';
 
 import { Formik, Field, Form, FormikHelpers } from 'formik';
- import Loading from '../../components/Loading/Loading';
-
+import Loading from '../../components/Loading/Loading';
+import moment from 'moment';
 
 import Notiflix from 'notiflix';
 import FotoDbc from '../../images/download.png'
@@ -34,7 +34,8 @@ function SetUsers() {
   console.log('Params=>',idUsuario)
 
   const PostInUsuarios = async(values:PessoaDTO) =>{
-    
+
+    values.dataNascimento = moment(values.dataNascimento ,'DD/MM/YYYY' ).format('YYYY-MM-DD');
     try{
       const {data} = await api.post('pessoa' , values);
       Notiflix.Notify.success('Novo Usuario Criado!')
@@ -95,7 +96,7 @@ function SetUsers() {
           idUsuario?
           {
             cpf: objPessoaEspecifica.cpf,
-            dataNascimento: objPessoaEspecifica.dataNascimento,
+            dataNascimento: moment(objPessoaEspecifica.dataNascimento ,'YYYY-MM-DD' ).format('DD/MM/YYYY'),
             email: objPessoaEspecifica.email,
             nome: objPessoaEspecifica.nome
           }
@@ -107,6 +108,7 @@ function SetUsers() {
             nome: ''
           }
         }
+        
          onSubmit={(
           values: PessoaDTO,
           { setSubmitting }: FormikHelpers<PessoaDTO>
@@ -120,16 +122,16 @@ function SetUsers() {
         <Form >
             <DivBeforeForm>
           <label htmlFor="nome">NOME</label>
-          <Field id="nome" name="nome" placeholder="nome" as={InputForm}/>
+          <Field id="nome" name="nome" placeholder="Nome" as={InputForm}/>
 
           <label htmlFor="email">EMAIL</label>
-          <Field id="email" name="email" placeholder="email"  as={InputForm}/>
+          <Field id="email" name="email" placeholder="Email"  as={InputForm}/>
           
           <label htmlFor="cpf">cpf</label>
-          <Field id="cpf" name="cpf" placeholder="cpf"  as={InputForm}/>
+          <Field id="cpf" name="cpf" placeholder="Cpf"  as={InputForm}/>
 
           <label htmlFor="dataNascimento">DATA DE NASCIMENTO</label>
-          <Field id="dataNascimento" name="dataNascimento" placeholder="2022-04-08"  as={InputForm}/>
+          <Field id="dataNascimento" name="dataNascimento" placeholder="dd/mm/aaaa"  as={InputForm}/>
 
           <BotaoForm type="submit">{idUsuario ?'Atualizar' :'Adicionar'}</BotaoForm>
           </DivBeforeForm>
