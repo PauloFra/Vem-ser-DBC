@@ -3,6 +3,11 @@ import { Formik , Field , Form , FormikHelpers} from "formik"
 import { LoginDTO } from "../../modal/LoginDTO"
 import FotoDbc from './download.png'
 
+import { 
+  IoIosEye,
+  IoIosEyeOff
+} from "react-icons/io";
+
 import {
   BtnChangeType,
   DivLogo,
@@ -19,21 +24,27 @@ import {useContext , useEffect , useState} from 'react'
 import { AuthContext } from "../../context/AuthContext"
 function Login() {
   const [inputValue , setInputValue] = useState<any>('password')
+  const [eye , setEye] = useState<any>(<IoIosEye />)
   const navigate = useNavigate()
-  const {handleLogin} = useContext<any>(AuthContext);
+  const {handleLogin , getForGetNumber} = useContext<any>(AuthContext);
   useEffect(()=>{
     const token = localStorage.getItem('token')
+    
     if(token){
+      getForGetNumber()
       navigate('/')
     }
 },[])
 const changeType = () =>{
   if(inputValue === 'password'){
       setInputValue('text')
+      setEye(<IoIosEye />)
   }else{
     setInputValue('password')
+    setEye(<IoIosEyeOff />)
   }  
 }
+const X = <IoIosEye />;
   return (
     <ContainerLogin>
      
@@ -64,8 +75,8 @@ const changeType = () =>{
               <Field  name="usuario" id="usuario" placeholder="Digite o nome do usuário" as={InputForm}/>
               <label htmlFor="senha">SENHA</label>
               <Field name="senha" type={inputValue} id="senha" placeholder="Digite senha do usuário" as={InputForm} />
-              <BtnChangeType onMouseDown={()=>changeType()}>?</BtnChangeType>
-              <BotaoForm type="submit">Entrar</BotaoForm>
+              <BtnChangeType onMouseDown={()=>changeType()}>{eye}</BtnChangeType>
+              <BotaoForm type="submit" >Entrar</BotaoForm>
             </DivBeforeForm>  
         </Form>    
           

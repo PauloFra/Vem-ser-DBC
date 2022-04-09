@@ -15,7 +15,7 @@ function Header() {
     <header>
       <div className={style.ulLogo}>
           <img src={Foto} alt="" />
-          <Link to="">DashBoard</Link>
+          <Link to="">VemSer</Link>
        </div>
         <ul>
             <Link to={'/'}>
@@ -43,9 +43,11 @@ function Header() {
                 Lista de Endereços
               </li>
             </Link>
-            <li onClick={()=>handleLogout()} >
-               <a>Deslogar</a>
+            <a href='#'>
+            <li onClick={()=>handleLogout()} className={style.liLogout} >
+               Deslogar
             </li>
+            </a>
         </ul>
     </header>
     }

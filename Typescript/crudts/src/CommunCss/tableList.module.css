@@ -17,7 +17,7 @@
 .mainTable th{
   padding: 30px 20px 30px 30px;
   border-top: 1px solid #DFE0EB;
-  font-weight: normal;
+  font-weight: bold;
 }
 .secondHeader li{
     display: inline;
@@ -89,10 +89,10 @@ tbody a{
 }
 .divFlex{
     display: flex;
-    font-size: 30px;
+    font-size: 25px;
     width: 200px;
     color: white;
-  
+    margin-left: 15px;
 }
 .divEdit{
     display: flex;
@@ -103,6 +103,11 @@ tbody a{
     padding: 2px;
     width: 65px;
     color: white;
+    transition: 1s;
+}
+.divEdit:hover{
+   background-color: #31edae;
+   color: #252733;
 }
 .divRemove{
     display: flex;
@@ -114,7 +119,12 @@ tbody a{
     margin-left: 20px;
     width: 65px;
     color: white;
-  
+    transition: 1s;  
+}
+.divRemove:hover{  
+    background-color: #ff5959;
+    color: #252733;
+    transition: 1s;
 }
 .textCenter{
     margin-left: 33px;

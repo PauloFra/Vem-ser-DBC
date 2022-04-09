@@ -1,7 +1,6 @@
 export interface EnderecoDTO {
     cep: string;
     logradouro: string;
-    bairro: string;
     localidade: string;
     complemento:string;
     uf: string;
@@ -15,6 +14,7 @@ export interface EnderecoSwaggerDTO {
     tipo: string;
     numero: number;
     complemento: string;
+    logradouro: string;
     cep:string;
     cidade: string;
     estado: string;

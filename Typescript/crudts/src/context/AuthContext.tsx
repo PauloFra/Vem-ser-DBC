@@ -6,26 +6,22 @@ import { PessoasDTO } from '../modal/PessoasDTO'
 import { EnderecoDTO } from '../modal/ContatoDTO'
 import { EnderecoSwaggerDTO } from '../modal/ContatoDTO'
 import { PessoaDTO } from '../modal/PessoaDTO'
-
+import Notiflix from 'notiflix'
 export const AuthContext = createContext({})
 
 const AuthProvider:FC<ReactNode> = ({children}) => {
     const [isToken , setIsToken] = useState(false)
     const [loading , setLoading] = useState<boolean>(true)
-    
-    const [arrayPessoas , setArrayPessoas] = useState<PessoasDTO['pessoas']>([])
-    
+    const [arrayPessoas , setArrayPessoas] = useState<PessoasDTO['pessoas']>()    
     const [objPessoa , setObjPessoa] = useState<PessoaDTO>({
         nome: '',
         email: '',
         cpf: '',
         dataNascimento: '',       
         })
-
     const [objEndereco , setObjEndereco] = useState<EnderecoDTO>({
         cep: '',
         logradouro: '',
-        bairro: '',
         localidade: '',
         complemento:'',
         uf: '',
@@ -34,10 +30,27 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
         numero:''
     }
     )
-    
     const [arrayEndereço , setArrayEndereço] = useState<EnderecoSwaggerDTO>()
     const navigate = useNavigate()
 
+    // const getForGetNumber = async() =>{
+    //     try{
+    //         const {data} = await api.get('pessoa')
+    //         setNumerosTotais(data)
+    //     }
+    //     catch(error){
+    //         console.log(error);    
+    //     }
+
+    //     try{
+    //         const {data} = await api.get('endereco')            
+    //     }
+    //     catch(error){
+    //         console.log(error);
+            
+    //     }
+    //     setLoadingHome(false)
+    // }
     useEffect(()=>{
         const token = localStorage.getItem('token')
         if(token){
@@ -67,7 +80,7 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
         }catch(error){
             console.log(error)
             setLoading(false)
-            alert('Ops , usuario ou senha inválida')
+            Notiflix.Notify.failure('Ops! ,Erro de login');
         }
     }
     const getInPessoa = async() =>{
@@ -94,8 +107,22 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
     if(loading){
         return(<h1>Loading</h1>)
     }
+
+
     return (
-    <AuthContext.Provider value={{handleLogin  , handleLogout,isToken,getInPessoa,arrayPessoas ,setArrayEndereço ,arrayEndereço ,getInEndereço ,objPessoa , setObjPessoa ,objEndereco , setObjEndereco}}>
+    <AuthContext.Provider value={{
+        handleLogin,
+        handleLogout,
+        isToken,
+        getInPessoa,
+        arrayPessoas,
+        setArrayEndereço,
+        arrayEndereço,
+        getInEndereço,
+        objPessoa,
+        setObjPessoa,
+        objEndereco,
+        setObjEndereco}}>
         {children}
     </AuthContext.Provider>
   )

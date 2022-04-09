@@ -4,10 +4,12 @@ import SubHeader from '../SubHeader/SubHeader';
 import { PessoasDTO } from '../../modal/PessoasDTO'
 import { Link } from 'react-router-dom';
 import api from '../../api';
+import { PessoaDTO } from '../../modal/PessoaDTO';
+import Notiflix from 'notiflix';
+import Loading from '../Loading/Loading';
 import { AuthContext } from '../../context/AuthContext';
 import { 
     IoIosColorWand,
-    IoMdSearch,
     IoMdTrash,
     IoMdFunnel,
     IoMdReturnLeft
@@ -21,16 +23,32 @@ function ListaUsers({pessoas}:PessoasDTO) {
         setObjPessoa(values)
         console.log(objPessoa)
     }
-    const removePessoa = async(idPessoa:number) =>{
-        try{
-            const {data} = await api.delete(`/pessoa/${idPessoa}`)
-            alert('Usuario Deletado')
-            document.location.reload();
-        }
-        catch(error){
-            console.log(error)
-        }
+    const removePessoa = async(values:PessoaDTO) =>{
+        Notiflix.Confirm.show(
+            'Excluir Usuario',
+            `Tem certeza que deseja excluir ${values.nome} da lista de usuarios ?`,
+            'Sim',
+            'Não',
+            async function okCb() {
+                try{
+                    const {data} = await api.delete(`/pessoa/${values.idPessoa}`)
+                    Notiflix.Notify.success('Usuario deletado');
+                    setTimeout(() =>{ document.location.reload()}, 1000);  
+             }
+                catch(error){
+                    console.log(error)
+                }
+            },
+            function cancelCb() {
+                Notiflix.Notify.info('Nenhum usuario deletado');
+            },
+            {
+              width: '420px',
+              borderRadius: '8px',
+            },);
+       
     }
+    console.log('=>>>>>>>>> ' ,objPessoa)
   return (
     <>
     <div className={style.bigContent}>
@@ -79,7 +97,7 @@ function ListaUsers({pessoas}:PessoasDTO) {
                             </div>
                         </Link> 
 
-                        <a onClick={()=>{removePessoa(pessoa.idPessoa)}} href="#">
+                        <a onClick={()=>{removePessoa(pessoa)}} href="#">
                             <div  className={style.divRemove}>
                                 <IoMdTrash /> 
                             </div>

@@ -6,8 +6,10 @@ import api from '../../api';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { EnderecoDTO } from '../../modal/ContatoDTO';
 import FotoDbc from '../../images/download.png'
-import { useParams } from 'react-router-dom'
+import { useParams ,useNavigate } from 'react-router-dom'
+import Loading from '../../components/Loading/Loading';
 
+import Notiflix from 'notiflix';
 import { EnderecoSwaggerDTO } from '../../modal/ContatoDTO';
 import {
   BtnChangeType,
@@ -38,9 +40,8 @@ import './Adress.css'
     const {handleLogout , objEndereco} = useContext<any>(AuthContext)
 
     const {idEndereco} = useParams()
-    console.log('UseParam =>', idEndereco )
-
-    const [arrContato , setArrContato ] = useState<any>([])
+    const navigate = useNavigate()
+    const [arrContato , setArrContato ] = useState<any>()
     
     const setup = async() => {
     //Get No Endereço especifico em base no id do useParams
@@ -62,16 +63,14 @@ import './Adress.css'
       try{
         const {data} = await axios.get(`https://viacep.com.br/ws/${values.cep}/json/`);   
         setFieldValue('logradouro' , data.logradouro)
-        setFieldValue('bairro' , data.bairro)
         setFieldValue('localidade' , data.localidade)
         setFieldValue('uf' , data.uf)
-        console.log(data)     
+        
       }catch(error){
         console.log(error)
-        alert('Ops!')
+        Notiflix.Notify.warning('Ops!, CEP invalido');
       }
     }
- 
     async function PostInEndereco(values:EnderecoDTO){
       let idPessoa = 658
       //Post na api do Maicon com os dados dos inputs
@@ -89,10 +88,11 @@ import './Adress.css'
      try{
       const {data} = await api.post(`endereco/${idPessoa}` , newAddress);
       console.log(data)
-      alert('Novo Endereço Criado!')
+      Notiflix.Notify.success('Novo Endereço Criado!')
+      setTimeout(() =>{ document.location.reload()}, 1500); 
      }catch(error){
       console.log(error);
-      alert('Ops!')
+      Notiflix.Notify.failure('Ops! , ocorreu algum erro');
      }
     }
 
@@ -112,21 +112,26 @@ import './Adress.css'
       try{
         const {data} = await api.put(`endereco/${idEndereco}` ,newAddress )
         console.log(data)
-        alert('usuario atualizado')
+        Notiflix.Notify.success('Endereço Atualizado!')
+        setTimeout(() =>{ navigate('/list-address')}, 1300); 
       }catch(error){
         console.log(error); 
-        alert('Ops!')
+        Notiflix.Notify.failure('Ops! , ocorreu algum erro');
       }
-}
-
-    console.log('Array Endereços', arrContato.cep);
-    
+}    
   useEffect(()=>{
     setup()
   },[])
   // function handleUpdate(setFieldValue:any){
   //   setFieldValue( , arrContato.cep)
   // }
+  
+  if(idEndereco && !arrContato ){
+      return(<Loading />)
+  }
+
+  console.log(arrContato)
+  console.log(idEndereco)
   return (
     <ContainerLoginForSetUser  className='divBg'>
       <DivCenter className='divMaior'>
@@ -143,21 +148,20 @@ import './Adress.css'
           idEndereco 
           ?
           {
-            cep: objEndereco.cep,
-            logradouro: objEndereco.logradouro,
-            bairro: objEndereco.bairro,
-            localidade: objEndereco.localidade,
-            uf: objEndereco.uf,
-            tipo: objEndereco.tipo,
-            pais: objEndereco.pais,
-            numero: objEndereco.numero,
-            complemento: objEndereco.complemento
+            cep: arrContato.cep,
+            logradouro: arrContato.logradouro,
+            localidade: arrContato.cidade,
+            uf: arrContato.estado,
+            tipo: arrContato.tipo,
+            pais: arrContato.pais,
+            numero: arrContato.numero,
+            complemento: arrContato.complemento
           }
           :
           {
             cep: '',
             logradouro: '',
-            bairro: '',
+          
             localidade: '',
             uf: '',
             tipo: 'RESIDENCIAL',
@@ -186,9 +190,6 @@ import './Adress.css'
           <label htmlFor="logradouro">LOGRADOURO</label>
           <Field id="logradouro" name="logradouro" placeholder="Logradouro"  as={InputForm}/>
           
-          <label htmlFor="bairro">BAIRRO</label>
-          <Field id="bairro" name="bairro" placeholder="bairro"  as={InputForm}/>
-
           <label htmlFor="localidade">LOCALIDADE</label>
           <Field id="localidade" name="localidade" placeholder="localidade" as={InputForm} />
 

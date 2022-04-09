@@ -1,15 +1,16 @@
 import { useContext ,useEffect , useState} from 'react'
 import { AuthContext } from '../../context/AuthContext'
-import axios from 'axios';
+
 import api from '../../api';
 
 import { Formik, Field, Form, FormikHelpers } from 'formik';
+ import Loading from '../../components/Loading/Loading';
 
-import { EnderecoDTO } from '../../modal/ContatoDTO';
 
+import Notiflix from 'notiflix';
 import FotoDbc from '../../images/download.png'
 
-import { useParams } from 'react-router-dom'
+import { useParams  , useNavigate} from 'react-router-dom'
 
 
 import { PessoaDTO } from '../../modal/PessoaDTO';
@@ -27,29 +28,33 @@ import {
 function SetUsers() {
   const {objPessoa , setObjPessoa} = useContext<any>(AuthContext)
 
-  const [objPessoaEspecifica , setObjPessoaEspecifica] = useState<PessoaDTO>()
+  const [objPessoaEspecifica , setObjPessoaEspecifica] = useState<any>()
   const {idUsuario} = useParams()
+  const navigate = useNavigate()
   console.log('Params=>',idUsuario)
 
   const PostInUsuarios = async(values:PessoaDTO) =>{
-    alert(JSON.stringify(values))
+    
     try{
       const {data} = await api.post('pessoa' , values);
-
-      alert('esses valores foram inseridos =>' + data);
+      Notiflix.Notify.success('Novo Usuario Criado!')
+      setTimeout(() =>{ document.location.reload()}, 1000); 
     }
     catch(error){
       console.log(error);
-      
+      Notiflix.Notify.failure('Ops! , ocorreu algum erro');
     }
   }
   const atualizarUsuario = async(values:PessoaDTO) => {
     try{
       const {data} = await api.put(`pessoa/${idUsuario}` , values)
       console.log(data)
+      Notiflix.Notify.success('Usuario Atualizado!')
+      setTimeout(() =>{ navigate('/users')}, 1300); 
     }
     catch(error){
       console.log(error);
+      Notiflix.Notify.failure('Ops! , ocorreu algum erro');
     }
   }
   
@@ -70,6 +75,9 @@ function SetUsers() {
   console.log(objPessoaEspecifica);
   
   //1) Post em pessoa com os dados dos inputs
+  if(idUsuario && !objPessoaEspecifica ){
+    return(<Loading />)
+}
   return (
     <div>
       <ContainerLoginForSetUser>
@@ -86,10 +94,10 @@ function SetUsers() {
         initialValues={ 
           idUsuario?
           {
-            cpf: objPessoa.cpf,
-            dataNascimento: objPessoa.dataNascimento,
-            email: objPessoa.email,
-            nome: objPessoa.nome
+            cpf: objPessoaEspecifica.cpf,
+            dataNascimento: objPessoaEspecifica.dataNascimento,
+            email: objPessoaEspecifica.email,
+            nome: objPessoaEspecifica.nome
           }
           :
           {
@@ -115,7 +123,7 @@ function SetUsers() {
           <Field id="nome" name="nome" placeholder="nome" as={InputForm}/>
 
           <label htmlFor="email">EMAIL</label>
-          <Field id="email" name="email" placeholder="email"  defaultValue='t' as={InputForm}/>
+          <Field id="email" name="email" placeholder="email"  as={InputForm}/>
           
           <label htmlFor="cpf">cpf</label>
           <Field id="cpf" name="cpf" placeholder="cpf"  as={InputForm}/>

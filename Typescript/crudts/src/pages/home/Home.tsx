@@ -1,26 +1,92 @@
-import { useContext , useEffect} from 'react'
+import { useContext , useEffect , useState} from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import api from '../../api'
+import Loading from '../../components/Loading/Loading'
 import { 
   Card,
+  TextRight,
+  PAbout,
+  DivAbout,
+  CardsDisplay,
+  CardNumber,
   Container,
-  CardTitle
+  CardTitle,
+  
 } from './Home.style'
 function Home() {
-  const {handleLogout} = useContext<any>(AuthContext)
- 
-  return (
+
+  const [numerosTotais ,setNumerosTotais] = useState<number>()
+  const [numerosTotaisUs ,setNumerosTotaisUs] = useState<number>()
+
+  useEffect(()=>{
+    getForGetNumber()
+  },[])
+const getForGetNumber = async() =>{
+        try{
+            const {data} = await api.get('pessoa')
+            setNumerosTotais(data.length)
+        }
+        catch(error){
+            console.log(error);    
+        }
+
+        try{
+            const {data} = await api.get('endereco')  
+            setNumerosTotaisUs(data.length)         
+        }
+        catch(error){
+            console.log(error);            
+        }
+    }
+  if(!numerosTotais){
+    return(
+      <Loading/>
+    )
+  }
+
+  if(!numerosTotaisUs)
+  return(
+    <Loading/>
+  )
+  console.log(numerosTotais)
+   return (
     <Container>
-      <Card>
+     <CardsDisplay>
+     <Card>
         <CardTitle>
-          <h3>Total de usuarios</h3>
+          Total De Usuarios
         </CardTitle>
+        <CardNumber>{numerosTotais}</CardNumber>
       </Card>
       <Card>
         <CardTitle>
-          <h3>Total de usuarios</h3>
-          <p></p>
+        Total De Endereços
         </CardTitle>
+        <CardNumber>{numerosTotaisUs}</CardNumber>
       </Card> 
+      <Card>
+        <CardTitle>
+        Total De Endereços
+        </CardTitle>
+        <CardNumber>32</CardNumber>
+      </Card> 
+      <Card>
+        <CardTitle>
+        Total De Endereços
+        </CardTitle>
+        <CardNumber>59</CardNumber>
+      </Card> 
+     </CardsDisplay>
+     <DivAbout>
+      <CardTitle>Sobre Nós</CardTitle>
+      <PAbout>Nada se constrói sozinho é preciso parceria, sinergia, dividir e compartilhar os sonhos. É preciso estar próximo. O sucesso da DBC é fruto de um trabalho coletivo, de uma maturidade ímpar de nossos colaboradores. Por isso, aqui eles são os protagonistas!</PAbout>
+     <TextRight>
+     <CardTitle>Vem Ser</CardTitle>
+      <PAbout>
+Somos especialistas em soluções de desenvolvimento customizado de sistemas. A premissa do nosso trabalho integra usabilidade, design e performance no desenvolvimento em todas as plataformas líderes de mercado.</PAbout>
+      </TextRight>
+    </DivAbout>
+    
     </Container>
   )
 }

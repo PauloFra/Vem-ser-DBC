@@ -1,6 +1,6 @@
 header{
     min-width: 15%;
-    min-height: 1220px;
+    min-height: 890px;
     background-color: #363740;
     color: #DDE2FF;
 }
@@ -20,7 +20,6 @@ header li{
     margin: 25px 0 100px 0;
     justify-content: center;
     text-align: center;
-    font-size: 30px;
 }
 header li:hover{
  background-color: #9FA2B4;
@@ -36,3 +35,18 @@ header ul{
     transition: 0.3s;
     border-left: 4px solid #DDE2FF;
    } */
+.ulLogo > a{
+    font-size: 45px;
+    margin-left: 10px;
+}
+.liLogout{
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+}
+.liLogout:hover{
+    background-color: #fe75751a;
+    transition: 1s;
+    border-left:none;
+    
+}

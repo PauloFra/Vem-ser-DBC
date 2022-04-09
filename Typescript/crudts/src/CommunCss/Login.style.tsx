@@ -66,15 +66,23 @@ export const BotaoForm = styled.button`
     height: 53px;
     margin: 10px 0;
     border-radius: 6px;
+    transition: 1s;
+    :hover  {
+    background-color: #2c3ca9;
+    transition: 1s;
+  }
 `
 export const BtnChangeType = styled.a`
    position: absolute;
-   margin:128px 0 0 350px;
+   margin:130px 0 0 350px;
    background-color: transparent;
    border: transparent;
+   font-size: 20px;
+   transition: 1s;
    :hover{
        color: blue;
-   }
+       transition: 1s;
+    }
 `
 export const ContainerLoginForSetUser = styled.div`
     display: flex;
