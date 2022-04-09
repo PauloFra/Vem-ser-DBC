@@ -66,25 +66,24 @@ const getForGetNumber = async() =>{
       </Card> 
       <Card>
         <CardTitle>
-        Total De Endereços
+        
         </CardTitle>
-        <CardNumber>32</CardNumber>
+        <CardNumber></CardNumber>
       </Card> 
       <Card>
         <CardTitle>
-        Total De Endereços
+        
         </CardTitle>
-        <CardNumber>59</CardNumber>
+        <CardNumber></CardNumber>
       </Card> 
      </CardsDisplay>
      <DivAbout>
       <CardTitle>Sobre Nós</CardTitle>
       <PAbout>Nada se constrói sozinho é preciso parceria, sinergia, dividir e compartilhar os sonhos. É preciso estar próximo. O sucesso da DBC é fruto de um trabalho coletivo, de uma maturidade ímpar de nossos colaboradores. Por isso, aqui eles são os protagonistas!</PAbout>
-     <TextRight>
      <CardTitle>Vem Ser</CardTitle>
       <PAbout>
-Somos especialistas em soluções de desenvolvimento customizado de sistemas. A premissa do nosso trabalho integra usabilidade, design e performance no desenvolvimento em todas as plataformas líderes de mercado.</PAbout>
-      </TextRight>
+        Somos especialistas em soluções de desenvolvimento customizado de sistemas. A premissa do nosso trabalho integra usabilidade, design e performance no desenvolvimento em todas as plataformas líderes de mercado.
+      </PAbout>
     </DivAbout>
     
     </Container>

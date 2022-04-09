@@ -23,26 +23,26 @@ function Header() {
                 Home
               </li>
             </Link>
-            <Link to={'/set-users'}>
+            <Link to={'/users'}>
               <li>
                 Usuarios
               </li>
             </Link>
-            <Link to={'/users'}>
+            {/* <Link to={'/users'}>
               <li>
                 Lista de Usuarios
               </li>
-            </Link>
-            <Link to={'/address'}>
+            </Link> */}
+            <Link to={'/list-address'}>
               <li>
                 Endereço
               </li>
             </Link>
-            <Link to={'/list-address'}>
+            {/* <Link to={'/list-address'}>
               <li>
                 Lista de Endereços
               </li>
-            </Link>
+            </Link> */}
             <a href='#'>
             <li onClick={()=>handleLogout()} className={style.liLogout} >
                Deslogar

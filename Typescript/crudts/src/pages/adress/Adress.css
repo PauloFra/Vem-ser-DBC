@@ -10,6 +10,7 @@
     border: none;
     height: 53px;
     margin: 10px 0;
+    transition: 1s;
     border-radius: 6px;
 }
 .divBg{
@@ -23,4 +24,8 @@
     color: #9FA2B4;
     border: 1px solid #DFE0EB;
     outline-color: #DFE0EB;
+}
+.btnConsultaCep:hover{
+  transition: 1s;
+  background-color: #5b5b5b;
 }

@@ -89,7 +89,8 @@ import './Adress.css'
       const {data} = await api.post(`endereco/${idPessoa}` , newAddress);
       console.log(data)
       Notiflix.Notify.success('Novo Endereço Criado!')
-      setTimeout(() =>{ document.location.reload()}, 1500); 
+      setTimeout(() =>{ navigate('/list-address')}, 1500); 
+      
      }catch(error){
       console.log(error);
       Notiflix.Notify.failure('Ops! , ocorreu algum erro');
@@ -126,7 +127,7 @@ import './Adress.css'
   //   setFieldValue( , arrContato.cep)
   // }
   
-  if(idEndereco && !arrContato ){
+  if(idEndereco && !arrContato){
       return(<Loading />)
   }
 
@@ -137,7 +138,7 @@ import './Adress.css'
       <DivCenter className='divMaior'>
       <DivLogo>
        <img src={FotoDbc} width="48" alt="" />
-       <h1>Address</h1>
+       <h1>Endereço</h1>
       </DivLogo>
       <TitleLogin>{idEndereco ?'Atualize o ' :'Adicione um Novo'} Endereço</TitleLogin>
       <p>Entre com os dados abaixo</p>
@@ -161,7 +162,6 @@ import './Adress.css'
           {
             cep: '',
             logradouro: '',
-          
             localidade: '',
             uf: '',
             tipo: 'RESIDENCIAL',
@@ -191,13 +191,13 @@ import './Adress.css'
           <Field id="logradouro" name="logradouro" placeholder="Logradouro"  as={InputForm}/>
           
           <label htmlFor="localidade">LOCALIDADE</label>
-          <Field id="localidade" name="localidade" placeholder="localidade" as={InputForm} />
+          <Field id="localidade" name="localidade" placeholder="Localidade" as={InputForm} />
 
           <label htmlFor="uf">UF</label>
-          <Field id="uf" name="uf" placeholder="uf" as={InputForm}/>
+          <Field id="uf" name="uf" placeholder="UF" as={InputForm}/>
 
           <label htmlFor="pais">PAIS</label>
-          <Field id="pais" name="pais" placeholder="pais"  as={InputForm}/>
+          <Field id="pais" name="pais" placeholder="Pais"  as={InputForm}/>
 
           <label htmlFor="tipo">TIPO</label>
           <Field name="color" as="select"  >
@@ -205,10 +205,10 @@ import './Adress.css'
             <option value="RESIDENCIAL">RESIDENCIAL</option>
           </Field>
           <label htmlFor="complemento">COMPLEMENTO</label>
-          <Field id="complemento" name="complemento" placeholder="complemento" as={InputForm} />  
+          <Field id="complemento" name="complemento" placeholder="Complemento" as={InputForm} />  
 
           <label htmlFor="numero">NUMERO</label>
-          <Field id="numero" name="numero" placeholder="Numero da Residencia"  as={InputForm}/>       
+          <Field id="numero" name="numero" placeholder="Numero da Residência"  as={InputForm}/>       
 
           <BotaoForm type="submit">{idEndereco ?'Atualizar' :'Adicionar'}</BotaoForm>
           </DivBeforeForm>

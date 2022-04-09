@@ -58,27 +58,26 @@ if(!arrayEndereço){
   return (
     <div className={style.bigContent}>
     <div className={style.secondHeader}>
-        <h2>Contacts</h2>
+        <h2>Endereços</h2>
         <SubHeader />
     </div>
       <div className={style.divDaLista}>
         <div className={style.headerTable}>
             <h2>Todos os endereços</h2>
             <ul>
-                <li><a href=""><IoMdReturnLeft /> Filter</a></li>
-                <li><a href=""><IoMdFunnel /> Sort</a></li>
+                <li className={style.linkToAdd}><Link  to={'/address'}>Adicionar Endereço</Link></li>
+                <li><a href=""><IoMdReturnLeft /> Filtrar</a></li>
+                <li><a href=""><IoMdFunnel /> Ordenar</a></li>
             </ul>
         </div>
         <table className={style.mainTable}>
            <thead>
                 <tr className={style.cabeçalhoTable}>
-                    <th>Cep</th>
+                    <th>Tipo</th>
                     <th>Cidade</th>
-                    <th>Complemento</th>
                     <th>Logradouro</th>
                     <th>Estado</th>
-                    <th>Pais</th>
-                    <th>Tipo</th>
+                    <th>Pais</th>   
                     <th>Atualizar / Remover</th>
 {/* cep: "88080700"
 cidade: "Florianópolis"
@@ -96,13 +95,10 @@ tipo: "RESIDENCIAL"
                 <tbody key={ind}>
                     <tr>
                     <th>
-                        {MaskCpf(element.cep)}
+                        {element.tipo}
                     </th>
                     <th>
                         {element.cidade}
-                    </th>
-                    <th>
-                    {element.complemento ? element.complemento : <>Sem Complemento</>}
                     </th>
                     <th>
                         {element.logradouro}
@@ -112,9 +108,6 @@ tipo: "RESIDENCIAL"
                     </th>
                     <th>
                         {element.pais}
-                    </th>
-                    <th>
-                        {element.tipo}
                     </th>
                      <th>
                      <div  className={style.divFlex}>

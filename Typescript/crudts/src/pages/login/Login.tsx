@@ -9,6 +9,7 @@ import {
 } from "react-icons/io";
 
 import {
+  LinkDefault,
   BtnChangeType,
   DivLogo,
   DivCenter,
@@ -81,7 +82,7 @@ const X = <IoIosEye />;
         </Form>    
           
       </Formik>
-      <p>Não possui uma conta ainda? <a href="">Criar</a></p>
+      <p>Não possui uma conta ainda? <LinkDefault href="">Criar</LinkDefault></p>
      </DivCenter>
       
     </ContainerLogin>

@@ -15,7 +15,9 @@ import {
     IoMdReturnLeft
 
 } from "react-icons/io";
-
+import moment from 'moment';
+import { formatCpf } from '../../Utils';
+// moment(arr.dataNascimento ,'YYYY-MM-DD' ).format('DD/MM/YYYY');
 function ListaUsers({pessoas}:PessoasDTO) {
     const {objPessoa , setObjPessoa} = useContext<any>(AuthContext)
 
@@ -23,6 +25,7 @@ function ListaUsers({pessoas}:PessoasDTO) {
         setObjPessoa(values)
         console.log(objPessoa)
     }
+  
     const removePessoa = async(values:PessoaDTO) =>{
         Notiflix.Confirm.show(
             'Excluir Usuario',
@@ -48,20 +51,22 @@ function ListaUsers({pessoas}:PessoasDTO) {
             },);
        
     }
-    console.log('=>>>>>>>>> ' ,objPessoa)
+    
   return (
     <>
     <div className={style.bigContent}>
     <div className={style.secondHeader}>
-        <h2>Tickets</h2>
+        <h2>Usuarios</h2>
         <SubHeader />
     </div>
       <div className={style.divDaLista}>
         <div className={style.headerTable}>
             <h2>Todos os usuarios</h2>
+            
             <ul>
-                <li><a href=""><IoMdReturnLeft /> Filter</a></li>
-                <li><a href=""><IoMdFunnel /> Sort</a></li>
+                <li  className={style.linkToAdd}><Link to={'/set-users'}>Adicionar Usuario</Link></li>
+                <li><a href=""><IoMdReturnLeft /> Filtrar</a></li>
+                <li><a href=""><IoMdFunnel /> Ordenar</a></li>
             </ul>
         </div>
         <table className={style.mainTable}>
@@ -84,10 +89,10 @@ function ListaUsers({pessoas}:PessoasDTO) {
                     {pessoa.email}
                 </th>
                 <th>
-                    {pessoa.cpf}
+                    {formatCpf(pessoa.cpf)}
                 </th>
                 <th>
-                    {pessoa.dataNascimento}
+                    {moment(pessoa.dataNascimento ,'YYYY-MM-DD' ).format('DD/MM/YYYY')}
                 </th>
                 <th className={style.textCenter}>
                     <div  className={style.divFlex}>

@@ -106,3 +106,10 @@ export const DivCenterForUser = styled.div`
    margin: 120px 0;
    border: 1px solid #9FA2B4;
 `
+export const LinkDefault = styled.a`
+  text-decoration: none;
+  color: #2c3ca9;
+  :hover{
+    text-decoration: underline;
+  }
+`

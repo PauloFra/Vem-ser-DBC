@@ -38,7 +38,7 @@ function SetUsers() {
     try{
       const {data} = await api.post('pessoa' , values);
       Notiflix.Notify.success('Novo Usuario Criado!')
-      setTimeout(() =>{ document.location.reload()}, 1000); 
+      setTimeout(() =>{ navigate('/users')}, 1300);
     }
     catch(error){
       console.log(error);
