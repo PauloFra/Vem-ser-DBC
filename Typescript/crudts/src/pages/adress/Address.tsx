@@ -9,11 +9,11 @@ import FotoDbc from '../../images/download.png'
 import { useParams ,useNavigate } from 'react-router-dom'
 import Loading from '../../components/Loading/Loading';
 
+import * as Yup from 'yup'
 import Notiflix from 'notiflix';
-import { EnderecoSwaggerDTO } from '../../modal/ContatoDTO';
 import {
-  BtnChangeType,
   DivLogo,
+  DivError,
   DivCenter,
   InputForm,
   BotaoForm,
@@ -131,8 +131,30 @@ import './Adress.css'
       return(<Loading />)
   }
 
-  console.log(arrContato)
-  console.log(idEndereco)
+  const SingupSchema = Yup.object().shape({
+    cep:Yup.string()
+    .min(2, 'Muito Curto')
+    .required('Obrigatorio'),
+    logradouro:Yup.string()
+    .min(2, 'Muito Curto')
+    .required('Obrigatorio'),
+    localidade:Yup.string()
+    .min(2, 'Muito Curto')
+    .required('Obrigatorio'),
+    uf:Yup.string()
+    .min(1, 'Muito Curto')
+    .max(2, 'Muito Longo')
+    .required('Obrigatorio'),
+    pais:Yup.string()
+    .min(1, 'Muito Curto')
+    .max(30, 'Muito Longo')
+    .required('Obrigatorio'),
+    complemento:Yup.string()
+    .min(2, 'Muito Curto')
+    .required('Obrigatorio'),
+    numero:Yup.string()
+    .required('Obrigatorio'),
+  });
   return (
     <ContainerLoginForSetUser  className='divBg'>
       <DivCenter className='divMaior'>
@@ -170,6 +192,7 @@ import './Adress.css'
             complemento: ''
           }
         }
+          validationSchema={SingupSchema}
          onSubmit={(
           values: EnderecoDTO,
           { setSubmitting }: FormikHelpers<EnderecoDTO>
@@ -177,28 +200,36 @@ import './Adress.css'
          {idEndereco ? atualizarEndereco(values) : PostInEndereco(values)} 
         }}
       >
-        {props =>(
-
+         {props =>(
         <Form >
             <DivBeforeForm>
           <label htmlFor="cep">CEP</label>
-          
           <Field id="cep" name="cep" placeholder="Cep"  as={InputForm}/>
-
+          {props.errors.cep && props.touched.cep ? (
+                <DivError>{props.errors.cep}</DivError>
+                ) : null} 
           <button className='btnConsultaCep' type='button' onClick={()=>BuscaCep(props.values , props.setFieldValue)}>Consulta Cep</button>
           
           <label htmlFor="logradouro">LOGRADOURO</label>
           <Field id="logradouro" name="logradouro" placeholder="Logradouro"  as={InputForm}/>
-          
+          {props.errors.logradouro && props.touched.logradouro ? (
+                <DivError>{props.errors.logradouro}</DivError>
+                ) : null} 
           <label htmlFor="localidade">LOCALIDADE</label>
           <Field id="localidade" name="localidade" placeholder="Localidade" as={InputForm} />
-
+          {props.errors.localidade && props.touched.localidade ? (
+                <DivError>{props.errors.localidade}</DivError>
+                ) : null} 
           <label htmlFor="uf">UF</label>
           <Field id="uf" name="uf" placeholder="UF" as={InputForm}/>
-
+          {props.errors.uf && props.touched.uf ? (
+                <DivError>{props.errors.uf}</DivError>
+                ) : null} 
           <label htmlFor="pais">PAIS</label>
           <Field id="pais" name="pais" placeholder="Pais"  as={InputForm}/>
-
+          {props.errors.pais && props.touched.pais ? (
+                <DivError>{props.errors.pais}</DivError>
+                ) : null} 
           <label htmlFor="tipo">TIPO</label>
           <Field name="color" as="select"  >
             <option value="COMERCIAL">COMERCIAL</option>
@@ -206,10 +237,14 @@ import './Adress.css'
           </Field>
           <label htmlFor="complemento">COMPLEMENTO</label>
           <Field id="complemento" name="complemento" placeholder="Complemento" as={InputForm} />  
-
+          {props.errors.complemento && props.touched.complemento ? (
+                <DivError>{props.errors.complemento}</DivError>
+                ) : null} 
           <label htmlFor="numero">NUMERO</label>
           <Field id="numero" name="numero" placeholder="Numero da Residência"  as={InputForm}/>       
-
+          {props.errors.numero && props.touched.numero ? (
+                <DivError>{props.errors.numero}</DivError>
+                ) : null} 
           <BotaoForm type="submit">{idEndereco ?'Atualizar' :'Adicionar'}</BotaoForm>
           </DivBeforeForm>
         </Form>

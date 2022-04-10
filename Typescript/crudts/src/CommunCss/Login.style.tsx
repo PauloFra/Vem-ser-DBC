@@ -113,3 +113,6 @@ export const LinkDefault = styled.a`
     text-decoration: underline;
   }
 `
+export const DivError = styled.div`
+   color: #ff4444;
+`

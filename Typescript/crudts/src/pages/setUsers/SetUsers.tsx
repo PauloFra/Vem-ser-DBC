@@ -1,5 +1,5 @@
-import { useContext ,useEffect , useState} from 'react'
-import { AuthContext } from '../../context/AuthContext'
+import { useEffect , useState} from 'react'
+
 
 import api from '../../api';
 
@@ -9,12 +9,12 @@ import moment from 'moment';
 
 import Notiflix from 'notiflix';
 import FotoDbc from '../../images/download.png'
-
 import { useParams  , useNavigate} from 'react-router-dom'
-
-
+// import InputMask from 'react-input-mask'
+import * as Yup from 'yup'
 import { PessoaDTO } from '../../modal/PessoaDTO';
 import {
+  DivError,
   DivLogo,
   DivCenterForUser,
   InputForm,
@@ -26,8 +26,6 @@ import {
 
 
 function SetUsers() {
-  const {objPessoa , setObjPessoa} = useContext<any>(AuthContext)
-
   const [objPessoaEspecifica , setObjPessoaEspecifica] = useState<any>()
   const {idUsuario} = useParams()
   const navigate = useNavigate()
@@ -73,8 +71,22 @@ function SetUsers() {
   useEffect(()=>{
     setup()
   },[])
-  console.log(objPessoaEspecifica);
-  
+
+  const SingupSchema = Yup.object().shape({
+    nome:Yup.string()
+    .min(2, 'Muito Curto')
+    .required('Obrigatorio'),
+    email:Yup.string()
+    .min(3, 'Email Inválido')
+    .required('Obrigatorio'),
+    cpf:Yup.string()
+    .min(10, 'CPF inválido')
+    .required('Obrigatorio'),
+    dataNascimento:Yup.string()
+    .min(9, 'Incompleto')
+    .required('Obrigatorio'),
+  });
+
   //1) Post em pessoa com os dados dos inputs
   if(idUsuario && !objPessoaEspecifica ){
     return(<Loading />)
@@ -108,7 +120,7 @@ function SetUsers() {
             nome: ''
           }
         }
-        
+        validationSchema={SingupSchema}
          onSubmit={(
           values: PessoaDTO,
           { setSubmitting }: FormikHelpers<PessoaDTO>
@@ -117,21 +129,32 @@ function SetUsers() {
           {idUsuario ? atualizarUsuario(values) : PostInUsuarios(values)} 
         }}
       >
-        {props =>(
+        {({ errors, touched }) =>(
 
         <Form >
             <DivBeforeForm>
           <label htmlFor="nome">NOME</label>
           <Field id="nome" name="nome" placeholder="Nome" as={InputForm}/>
-
+          {errors.nome && touched.nome ? (
+                  <DivError>{errors.nome}</DivError>
+                ) : null}
           <label htmlFor="email">EMAIL</label>
           <Field id="email" name="email" placeholder="Email"  as={InputForm}/>
+          {errors.email && touched.email ? (
+                  <DivError>{errors.email}</DivError>
+                ) : null}
           
-          <label htmlFor="cpf">cpf</label>
-          <Field id="cpf" name="cpf" placeholder="Cpf"  as={InputForm}/>
+          <label htmlFor="cpf">CPF</label>
+          <Field id="cpf" name="cpf" placeholder="Cpf" as={InputForm}/>
+          {errors.cpf && touched.cpf ? (
+                  <DivError>{errors.cpf}</DivError>
+                ) : null}
 
           <label htmlFor="dataNascimento">DATA DE NASCIMENTO</label>
           <Field id="dataNascimento" name="dataNascimento" placeholder="dd/mm/aaaa"  as={InputForm}/>
+          {errors.dataNascimento && touched.dataNascimento ? (
+                  <DivError>{errors.dataNascimento}</DivError>
+                ) : null}
 
           <BotaoForm type="submit">{idUsuario ?'Atualizar' :'Adicionar'}</BotaoForm>
           </DivBeforeForm>
