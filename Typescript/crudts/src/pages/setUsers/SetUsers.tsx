@@ -10,8 +10,10 @@ import moment from 'moment';
 import Notiflix from 'notiflix';
 import FotoDbc from '../../images/download.png'
 import { useParams  , useNavigate} from 'react-router-dom'
-// import InputMask from 'react-input-mask'
-import * as Yup from 'yup'
+import InputMask from 'react-input-mask'
+import * as Yup from 'yup';
+import  '../../CommunCss/FormCommun.css';
+
 import { PessoaDTO } from '../../modal/PessoaDTO';
 import {
   DivError,
@@ -22,8 +24,7 @@ import {
   TitleLogin,
   DivBeforeForm,
   ContainerLoginForSetUser
-} from '../../CommunCss/Login.style'
-
+} from '../../CommunCss/Login.style';
 
 function SetUsers() {
   const [objPessoaEspecifica , setObjPessoaEspecifica] = useState<any>()
@@ -34,6 +35,7 @@ function SetUsers() {
   const PostInUsuarios = async(values:PessoaDTO) =>{
 
     values.dataNascimento = moment(values.dataNascimento ,'DD/MM/YYYY' ).format('YYYY-MM-DD');
+    values.cpf = values.cpf.replaceAll('-','').replaceAll('.' , '');
     try{
       const {data} = await api.post('pessoa' , values);
       Notiflix.Notify.success('Novo Usuario Criado!')
@@ -45,6 +47,8 @@ function SetUsers() {
     }
   }
   const atualizarUsuario = async(values:PessoaDTO) => {
+    values.dataNascimento = moment(values.dataNascimento ,'DD/MM/YYYY' ).format('YYYY-MM-DD');
+    values.cpf = values.cpf.replaceAll('-','').replaceAll('.' , '');
     try{
       const {data} = await api.put(`pessoa/${idUsuario}` , values)
       console.log(data)
@@ -131,27 +135,37 @@ function SetUsers() {
       >
         {({ errors, touched }) =>(
 
-        <Form >
+        <Form className='formUser' >
             <DivBeforeForm>
           <label htmlFor="nome">NOME</label>
-          <Field id="nome" name="nome" placeholder="Nome" as={InputForm}/>
+          <Field id="nome" name="nome" placeholder="Nome" />
           {errors.nome && touched.nome ? (
                   <DivError>{errors.nome}</DivError>
                 ) : null}
           <label htmlFor="email">EMAIL</label>
-          <Field id="email" name="email" placeholder="Email"  as={InputForm}/>
+          <Field id="email" name="email" placeholder="Email" />
           {errors.email && touched.email ? (
                   <DivError>{errors.email}</DivError>
                 ) : null}
           
           <label htmlFor="cpf">CPF</label>
-          <Field id="cpf" name="cpf" placeholder="Cpf" as={InputForm}/>
+          <Field 
+          as={InputMask}
+          mask="999.999.999-99"
+          id="cpf"
+          name="cpf" 
+          placeholder="xxx.xxx.xxx-xx"/>
           {errors.cpf && touched.cpf ? (
                   <DivError>{errors.cpf}</DivError>
                 ) : null}
 
           <label htmlFor="dataNascimento">DATA DE NASCIMENTO</label>
-          <Field id="dataNascimento" name="dataNascimento" placeholder="dd/mm/aaaa"  as={InputForm}/>
+          <Field id="dataNascimento" 
+          as={InputMask}
+          mask='99/99/9999'
+          name="dataNascimento" 
+          placeholder="dd/mm/aaaa"  
+          />
           {errors.dataNascimento && touched.dataNascimento ? (
                   <DivError>{errors.dataNascimento}</DivError>
                 ) : null}

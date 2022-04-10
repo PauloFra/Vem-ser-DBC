@@ -80,7 +80,7 @@ const AuthProvider:FC<ReactNode> = ({children}) => {
         }catch(error){
             console.log(error)
             setLoading(false)
-            Notiflix.Notify.failure('Ops! ,Erro de login');
+            Notiflix.Notify.failure('Ops! ,Usuario ou senha inválido');
         }
     }
     const getInPessoa = async() =>{

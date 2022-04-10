@@ -25,3 +25,13 @@
     border: 1px solid #DFE0EB;
     outline-color: #DFE0EB;
 }
+.formUser input{
+    height: 42px;
+    font-size: 19px;
+    padding-left: 15px;
+    border-radius: 8px;
+    color: #9FA2B4;
+    border: 1px solid #DFE0EB;
+    outline-color: #DFE0EB;
+    
+}
